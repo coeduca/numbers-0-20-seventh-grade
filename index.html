@@ -8,44 +8,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
 <style>
-/* ============================================================
-   VARIABLES Y BASE
-   ============================================================ */
-:root {
-  --primary: #1B3A6B;
-  --primary-d: #0D2444;
-  --coral: #FF6B6B;
-  --yellow: #FFD93D;
-  --green: #6BCB77;
-  --blue: #4D96FF;
-  --purple: #9B5DE5;
-  --orange: #FF9A3C;
-  --bg: #F0EDE8;
-  --card: #FFFFFF;
-  --text: #1A1A2E;
-  --muted: #6B7280;
-  --border: #E5E7EB;
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --r: 16px;
-  --rs: 10px;
+:root{
+  --primary:#1B3A6B;--primary-d:#0D2444;--coral:#FF6B6B;--yellow:#FFD93D;
+  --green:#6BCB77;--blue:#4D96FF;--purple:#9B5DE5;--orange:#FF9A3C;
+  --bg:#F0EDE8;--card:#FFFFFF;--text:#1A1A2E;--muted:#6B7280;
+  --border:#E5E7EB;--shadow:0 4px 24px rgba(0,0,0,.08);--r:16px;--rs:10px
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Nunito',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;
   background-image:radial-gradient(circle at 15% 85%,rgba(77,150,255,.07) 0%,transparent 50%),
-                   radial-gradient(circle at 85% 15%,rgba(155,93,229,.07) 0%,transparent 50%);
-  overflow-x: hidden;
-}
+  radial-gradient(circle at 85% 15%,rgba(155,93,229,.07) 0%,transparent 50%)}
 
-/* ============================================================
-   HEADER
-   ============================================================ */
+/* HEADER */
 header{background:linear-gradient(135deg,#1B3A6B 0%,#0a1f40 100%);padding:48px 20px 80px;text-align:center;position:relative;overflow:hidden}
 header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
 .hc{position:relative;z-index:1;max-width:720px;margin:0 auto}
@@ -56,20 +32,18 @@ header h1{font-family:'Baloo 2',cursive;font-size:clamp(2rem,5.5vw,3.8rem);font-
 header h1 span{color:var(--yellow)}
 .hsub{color:rgba(255,255,255,.65);font-size:.95rem;margin-bottom:32px}
 .sform{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fg{display:flex;flex-direction:column;text-align:left;}
-.fg label{color:rgba(255,255,255,.8);font-size:.72rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
-.sform input{padding:12px 16px;border:2px solid rgba(255,255,255,.25);border-radius:var(--rs);background:rgba(255,255,255,.15);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;transition:.3s;width:100%;}
-.sform input::placeholder{color:rgba(255,255,255,.5)}
+.fg{display:flex;flex-direction:column}
+.fg label{color:rgba(255,255,255,.65);font-size:.72rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
+.sform input{padding:12px 16px;border:2px solid rgba(255,255,255,.25);border-radius:var(--rs);background:rgba(255,255,255,.15);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;transition:.3s}
+.sform input::placeholder{color:rgba(255,255,255,.4)}
 .sform input:focus{outline:none;border-color:var(--yellow);background:rgba(255,255,255,.22)}
 .prog-wrap{margin-top:22px}
 .prog-bar-bg{background:rgba(255,255,255,.12);border-radius:50px;height:8px;overflow:hidden}
 .prog-bar{height:100%;background:linear-gradient(90deg,var(--yellow),var(--coral));border-radius:50px;width:0%;transition:width .6s ease}
-.prog-txt{color:rgba(255,255,255,.7);font-size:.78rem;text-align:right;margin-top:5px;font-weight:600;}
-.wave-sep{display:block;width:100%;margin-top:-1px;line-height:0;height:50px}
+.prog-txt{color:rgba(255,255,255,.5);font-size:.78rem;text-align:right;margin-top:5px}
+.wave-sep{display:block;width:100%;margin-top:-1px;line-height:0}
 
-/* ============================================================
-   MAIN & CARDS
-   ============================================================ */
+/* MAIN */
 main{max-width:920px;margin:0 auto;padding:40px 16px}
 .ex-card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:30px;overflow:hidden;animation:slideUp .5s ease backwards}
 .ex-card:nth-child(1){animation-delay:.05s}.ex-card:nth-child(2){animation-delay:.1s}
@@ -85,7 +59,6 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .ex-sub{color:var(--muted);font-size:.82rem;margin-top:2px}
 .ex-ico{font-size:1.9rem;margin-left:auto}
 .ex-body{padding:26px}
-/* Colores de ejercicios */
 .c1{border-top:4px solid #FF6B6B}.c1 .ex-num{background:#FF6B6B}
 .c2{border-top:4px solid #4D96FF}.c2 .ex-num{background:#4D96FF}
 .c3{border-top:4px solid #6BCB77}.c3 .ex-num{background:#6BCB77}
@@ -96,220 +69,212 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .c8{border-top:4px solid #4D96FF}.c8 .ex-num{background:#4D96FF}
 .c9{border-top:4px solid #6BCB77}.c9 .ex-num{background:#6BCB77}
 .c10{border-top:4px solid #9B5DE5}.c10 .ex-num{background:#9B5DE5}
+
+/* INSTR BOX */
 .instr{background:#FFF9E6;border:1.5px solid #FFD93D;border-radius:var(--rs);padding:10px 14px;font-size:.85rem;color:#6B4C00;margin-bottom:18px;display:flex;gap:8px;align-items:flex-start}
 .instr::before{content:'💡';flex-shrink:0}
 
-/* ============================================================
-   EX1: WORD SEARCH (SOLUCIÓN COMPACTA PARA MÓVIL)
-   ============================================================ */
-.ws-outer{display:flex;flex-direction:column;align-items:center;gap:20px;width: 100%;}
-/* La grilla ahora es responsiva y compacta, encaja en cualquier móvil */
-.ws-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;user-select:none;touch-action:none; width: 100%; max-width: 400px; padding: 5px; margin: 0 auto;}
-/* Usamos aspect-ratio para que sean cuadrados perfectos sin importar el ancho */
-.ws-cell{width: 100%; aspect-ratio: 1; display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:700;font-size: clamp(0.75rem, 4vw, 1.1rem);border-radius:6px;cursor:pointer;transition:.12s;background:#F3F4F6;color:var(--text);border:2px solid transparent}
+/* ===== EX1: WORD SEARCH — COMPACT MOBILE ===== */
+.ws-outer{display:flex;flex-direction:column;align-items:center;gap:16px}
+.ws-grid-wrap{width:100%;overflow:hidden}
+.ws-grid{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:2px;
+  user-select:none;
+  touch-action:none;
+  width:100%;
+  max-width:380px;
+  margin:0 auto;
+}
+.ws-cell{
+  aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo 2',cursive;font-weight:700;
+  font-size:clamp(.6rem,2.2vw,.9rem);
+  border-radius:5px;cursor:pointer;transition:.12s;
+  background:#F3F4F6;color:var(--text);border:1.5px solid transparent;
+}
 .ws-cell.sel{background:#BFDBFE;border-color:#93C5FD;color:#1E40AF}
 .ws-cell.found{background:#D1FAE5!important;border-color:#6BCB77!important;color:#065F46!important;animation:pop .3s ease}
-@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
-.ws-words{display:flex;flex-wrap:wrap;gap:8px;justify-content:center; max-width: 500px;}
-.ws-tag{padding:5px 14px;border:2px solid var(--border);border-radius:20px;font-family:'Baloo 2',cursive;font-weight:700;font-size:.85rem;color:var(--muted);transition:.3s}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.ws-words{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;width:100%}
+.ws-tag{padding:5px 14px;border:2px solid var(--border);border-radius:20px;font-family:'Baloo 2',cursive;font-weight:700;font-size:.82rem;color:var(--muted);transition:.3s}
 .ws-tag.found{background:#D1FAE5;border-color:#6BCB77;color:#065F46;text-decoration:line-through}
 
-/* ============================================================
-   EX2: MATCH LINES
-   ============================================================ */
-.match-wrap{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:20px; min-height: 250px;}
-.match-col{display:flex;flex-direction:column;gap:12px;z-index:1;position:relative}
-.match-item{padding:12px 20px;border:2.5px solid var(--border);border-radius:var(--rs);cursor:pointer;font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;text-align:center;transition:.2s;background:white;min-width:120px;white-space:nowrap}
+/* EX2: MATCH LINES */
+.match-wrap{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.match-col{display:flex;flex-direction:column;gap:10px;z-index:1;position:relative}
+.match-item{padding:10px 18px;border:2.5px solid var(--border);border-radius:var(--rs);cursor:pointer;font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;text-align:center;transition:.2s;background:white;min-width:110px;white-space:nowrap}
 .match-item:hover{transform:scale(1.04);border-color:var(--blue)}
 .match-item.sel-left{border-color:var(--blue);background:#EFF6FF;box-shadow:0 0 0 3px rgba(77,150,255,.25)}
 #match-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
-.match-hint{font-size:.8rem;color:var(--muted);text-align:center;margin-top:15px}
+.match-hint{font-size:.8rem;color:var(--muted);text-align:center;margin-top:10px}
 .btn-reset{display:block;margin:12px auto 0;padding:7px 18px;border:2px solid var(--border);border-radius:20px;background:white;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.82rem;color:var(--muted);transition:.2s}
 .btn-reset:hover{border-color:var(--coral);color:var(--coral)}
 
-/* ============================================================
-   DRAG & DROP SHARED
-   ============================================================ */
-.word-bank{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);margin-bottom:22px;min-height:74px;transition:.2s; align-items: center; justify-content: center;}
+/* DRAG & DROP SHARED */
+.word-bank{display:flex;flex-wrap:wrap;gap:10px;padding:14px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);margin-bottom:22px;min-height:58px;transition:.2s}
 .word-bank.drag-over-bank{border-color:var(--blue);background:#EFF6FF}
-.d-chip{padding:8px 18px;border-radius:20px;font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;cursor:grab;user-select:none;touch-action:none;background:white;border:2px solid var(--border);color:var(--text);transition:transform .2s,box-shadow .2s,opacity .2s;display:inline-flex;align-items:center}
+.d-chip{padding:8px 16px;border-radius:20px;font-family:'Baloo 2',cursive;font-weight:700;font-size:.9rem;cursor:grab;user-select:none;touch-action:none;background:white;border:2px solid var(--border);color:var(--text);transition:transform .2s,box-shadow .2s,opacity .2s;display:inline-flex;align-items:center}
 .d-chip:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
 .d-chip.dragging-src{opacity:.3}
-.d-ghost{position:fixed;pointer-events:none;z-index:9999;opacity:.9;transform:rotate(-3deg) scale(1.06);box-shadow:0 8px 28px rgba(0,0,0,.22); margin:0 !important;}
+.d-ghost{position:fixed;pointer-events:none;z-index:9999;opacity:.9;transform:rotate(-3deg) scale(1.06);box-shadow:0 8px 28px rgba(0,0,0,.22)}
 
-/* ============================================================
-   EX3: FILL BLANKS (DRAG)
-   ============================================================ */
-.fill-sent{font-size:1.05rem;font-weight:600;line-height:2.4;margin-bottom:12px; padding: 8px 12px; background: #fdfdfd; border: 1px solid #f1f1f1; border-radius: 8px;}
-.drop-blank{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:40px;background:#F3F4F6;border:2px dashed var(--border);border-radius:var(--rs);vertical-align:middle;font-family:'Baloo 2',cursive;font-weight:700;font-size:.9rem;transition:.2s;padding:0 10px;cursor:default; margin: 0 6px;}
-.drop-blank.over{border-color:var(--blue);background:#EFF6FF; transform: scale(1.05);}
-.drop-blank.filled{background:#F0FFF4;border-style:solid;border-color:var(--green);color:#065F46; cursor: pointer;}
+/* EX3: FILL BLANKS */
+.fill-sent{font-size:1.05rem;font-weight:600;line-height:2.4;margin-bottom:10px}
+.drop-blank{display:inline-flex;align-items:center;justify-content:center;min-width:110px;height:36px;background:#F3F4F6;border:2px dashed var(--border);border-radius:var(--rs);vertical-align:middle;font-family:'Baloo 2',cursive;font-weight:700;font-size:.88rem;transition:.2s;padding:0 10px;cursor:default}
+.drop-blank.over{border-color:var(--blue);background:#EFF6FF}
+.drop-blank.filled{background:#F0FFF4;border-style:solid;border-color:var(--green);color:#065F46}
 
-/* ============================================================
-   EX4: SCRAMBLE
-   ============================================================ */
+/* EX4: SCRAMBLE */
 .scr-items{display:flex;flex-direction:column;gap:20px}
-.scr-item{background:#F9FAFB;border:1px solid #f1f1f1;border-radius:var(--rs);padding:18px}
-.scr-hint{font-size:.9rem;color:var(--muted);margin-bottom:12px; font-weight: 600;}
+.scr-item{background:#F9FAFB;border-radius:var(--rs);padding:18px}
+.scr-hint{font-size:.82rem;color:var(--muted);margin-bottom:10px}
 .tile-pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:48px}
-.tile-ans{display:flex;flex-wrap:wrap;gap:8px;padding:10px;background:white;border-radius:var(--rs);border:2px dashed var(--border);min-height:60px;margin-bottom:12px}
-.l-tile{width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.2rem;border:2.5px solid var(--border);border-radius:8px;cursor:pointer;transition:.2s;user-select:none;background:white; color: var(--primary);}
+.tile-ans{display:flex;flex-wrap:wrap;gap:8px;padding:8px;background:white;border-radius:var(--rs);border:2px dashed var(--border);min-height:48px;margin-bottom:10px}
+.l-tile{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.15rem;border:2.5px solid var(--border);border-radius:8px;cursor:pointer;transition:.2s;user-select:none;background:white}
 .l-tile:hover{border-color:var(--blue);background:#EFF6FF;transform:translateY(-2px)}
-.l-tile.used{opacity:.25;pointer-events:none; transform: scale(0.9);}
-.tile-ans .l-tile{background:#EFF6FF;border-color:var(--blue); color: #1D4ED8;}
+.l-tile.used{opacity:.25;pointer-events:none}
+.tile-ans .l-tile{background:#EFF6FF;border-color:var(--blue)}
 .tile-ans .l-tile:hover{background:#DBEAFE}
 .scr-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.btn-check{padding:8px 20px;border:none;border-radius:20px;background:var(--blue);color:white;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;font-size:.9rem;transition:.2s; box-shadow: 0 4px 10px rgba(77,150,255,0.3);}
+.btn-check{padding:8px 20px;border:none;border-radius:20px;background:var(--blue);color:white;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;font-size:.88rem;transition:.2s}
 .btn-check:hover{background:#2563EB;transform:translateY(-1px)}
 .btn-clear{padding:8px 16px;border:2px solid var(--border);border-radius:20px;background:white;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;color:var(--muted);transition:.2s}
 .btn-clear:hover{border-color:var(--coral);color:var(--coral)}
-.scr-result{font-weight:800;font-size:1rem; margin-left: auto;}
+.scr-result{font-weight:700;font-size:.95rem}
 .ok{color:#16A34A}.nok{color:#DC2626}
 
-/* ============================================================
-   EX5: EMOJI COUNT
-   ============================================================ */
+/* ===== EX5: EMOJI COUNT ===== */
 .cq-list{display:flex;flex-direction:column;gap:20px}
-.cq-item{background:#F9FAFB;border-radius:var(--rs);padding:20px; border: 1px solid #f1f1f1;}
-.cq-emojis{font-size:1.5rem;line-height:1.6;letter-spacing:4px;margin-bottom:16px;word-break:break-all; text-align: center;}
-.cq-label{font-weight:700;margin-bottom:12px;font-size:.95rem; color: var(--primary);}
-.cq-choices{display:flex;flex-wrap:wrap;gap:10px}
-.cho-btn{padding:10px 20px;border:2.5px solid var(--border);border-radius:20px;background:white;font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;cursor:pointer;transition:.2s; flex: 1; min-width: 100px; text-transform: capitalize;}
+.cq-item{background:#F9FAFB;border-radius:var(--rs);padding:18px}
+.cq-emojis{font-size:1.1rem;line-height:1.8;word-break:break-all;margin-bottom:12px;max-width:100%;overflow:hidden}
+.cq-label{font-weight:700;margin-bottom:10px;font-size:.9rem}
+.cq-choices{display:flex;flex-wrap:wrap;gap:8px}
+.cho-btn{padding:8px 18px;border:2.5px solid var(--border);border-radius:20px;background:white;font-family:'Baloo 2',cursive;font-weight:700;font-size:.88rem;cursor:pointer;transition:.2s}
 .cho-btn:hover{border-color:var(--purple);background:#F5F3FF}
 .cho-btn.sel{border-color:var(--purple);background:#EDE9FE;color:var(--purple)}
 .cho-btn.correct{border-color:var(--green);background:#D1FAE5;color:#065F46}
 .cho-btn.wrong{border-color:#EF4444;background:#FEE2E2;color:#991B1B}
 
-/* ============================================================
-   EX6: TRUE/FALSE
-   ============================================================ */
+/* EX6: TRUE/FALSE */
 .tf-list{display:flex;flex-direction:column;gap:14px}
-.tf-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:#F9FAFB;border-radius:var(--rs);flex-wrap:wrap; border: 1px solid #f1f1f1;}
-.tf-stmt{flex:1;font-weight:600;min-width:200px;font-size:1rem; color: var(--text);}
-.tf-btns{display:flex;gap:10px}
-.tf-btn{padding:8px 22px;border:2.5px solid var(--border);border-radius:20px;background:white;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;transition:.2s;font-size:.9rem}
+.tf-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border-radius:var(--rs);flex-wrap:wrap}
+.tf-stmt{flex:1;font-weight:600;min-width:180px;font-size:.95rem}
+.tf-btns{display:flex;gap:8px}
+.tf-btn{padding:8px 18px;border:2.5px solid var(--border);border-radius:20px;background:white;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:.2s;font-size:.88rem}
 .tf-t:hover,.tf-t.sel{border-color:var(--green);background:#D1FAE5;color:#065F46}
 .tf-f:hover,.tf-f.sel{border-color:#EF4444;background:#FEE2E2;color:#991B1B}
 
-/* ============================================================
-   EX7: DROPDOWN
-   ============================================================ */
+/* EX7: DROPDOWN */
 .dd-list{display:flex;flex-direction:column;gap:18px}
-.dd-sent{font-size:1.05rem;font-weight:600;line-height:2.2; padding: 12px 16px; background: #F9FAFB; border-radius: 8px;}
-.dd-select{padding:6px 30px 6px 12px;border:2.5px solid var(--border);border-radius:var(--rs);font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;background:white;cursor:pointer;transition:.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;vertical-align:middle; margin: 0 5px; color: var(--primary);}
-.dd-select:focus{outline:none;border-color:var(--blue); box-shadow: 0 0 0 3px rgba(77,150,255,.2);}
+.dd-sent{font-size:1.05rem;font-weight:600;line-height:2.2}
+.dd-select{padding:6px 30px 6px 12px;border:2.5px solid var(--border);border-radius:var(--rs);font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;background:white;cursor:pointer;transition:.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;vertical-align:middle}
+.dd-select:focus{outline:none;border-color:var(--blue)}
 
-/* ============================================================
-   EX8: EVEN/ODD
-   ============================================================ */
-.eo-bank{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);min-height:74px;margin-bottom:22px; justify-content: center;}
-.n-chip{padding:10px 20px;border-radius:12px;font-family:'Baloo 2',cursive;font-weight:800;font-size:1.2rem;cursor:grab;user-select:none;touch-action:none;background:white;border:2px solid var(--border);transition:.2s; display: inline-flex;}
-.n-chip:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1); border-color: var(--blue);}
-.eo-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.eo-col{border-radius:var(--rs);padding:18px;min-height:160px; display: flex; flex-direction: column;}
+/* ===== EX8: EVEN/ODD — FIXED ===== */
+.eo-bank{display:flex;flex-wrap:wrap;gap:10px;padding:14px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);min-height:60px;margin-bottom:22px}
+.eo-bank.over{border-color:var(--blue);background:#EFF6FF}
+.n-chip{padding:10px 20px;border-radius:12px;font-family:'Baloo 2',cursive;font-weight:800;font-size:1.1rem;cursor:grab;user-select:none;touch-action:none;background:white;border:2px solid var(--border);transition:.2s;display:inline-flex;align-items:center;justify-content:center}
+.n-chip:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.n-chip.dragging-src{opacity:.3}
+.eo-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.eo-col{border-radius:var(--rs);padding:14px;min-height:120px}
 .eo-even{background:#EFF6FF;border:2px dashed #93C5FD}
 .eo-odd{background:#FFF7ED;border:2px dashed #FCD34D}
-.eo-col-h{font-family:'Baloo 2',cursive;font-weight:800;font-size:1.1rem;text-align:center;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.06)}
+.eo-col.over{outline:3px dashed #4D96FF;outline-offset:2px}
+.eo-col-h{font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid rgba(0,0,0,.06)}
 .eo-even .eo-col-h{color:#1D4ED8}
 .eo-odd .eo-col-h{color:#B45309}
-.eo-drop{flex: 1; min-height:100px;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start; justify-content: center; padding: 10px; transition: .2s;}
-.eo-drop.over{outline:3px dashed #93C5FD;outline-offset:2px;border-radius:10px; background: rgba(255,255,255,0.5);}
-.eo-odd .eo-drop.over{outline-color: #FCD34D;}
+.eo-drop{min-height:80px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:4px}
 
-/* ============================================================
-   EX9: EMOJI MATCH
-   ============================================================ */
-.em-bank{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);margin-bottom:22px;min-height:74px; justify-content: center; align-items: center;}
-.em-targets{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px}
-.em-target{background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);padding:16px 10px;text-align:center;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:.2s;cursor:pointer;}
-.em-target:hover{border-color: #cbd5e1;}
-.em-target.over{border-color:var(--green);background:#F0FFF4; transform: scale(1.02);}
-.em-target.filled{border-style:solid;border-color:var(--green); background: #f4fff7;}
-.em-emojis{font-size:1.4rem;line-height:1.6;letter-spacing:2px; padding: 0 5px;}
-.em-cnt{font-size:.8rem;color:var(--muted);font-weight:700; background: #fff; padding: 2px 10px; border-radius: 12px; border: 1px solid #eee;}
-.em-slot{min-height:42px;width: 100%; display:flex;align-items:center;justify-content:center; margin-top: 5px;}
+/* ===== EX9: EMOJI MATCH — FIXED ===== */
+.em-bank{display:flex;flex-wrap:wrap;gap:10px;padding:14px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);margin-bottom:22px;min-height:58px}
+.em-bank.over{border-color:var(--green);background:#F0FFF4}
+.em-targets{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.em-target{
+  background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);
+  padding:12px 8px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:6px;transition:.2s;cursor:default;overflow:hidden;min-height:120px;
+}
+.em-target.over{border-color:var(--green);background:#F0FFF4}
+.em-target.filled{border-style:solid;border-color:var(--green)}
+.em-emojis{
+  font-size:.9rem;line-height:1.5;word-break:break-all;
+  max-width:100%;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;
+}
+.em-cnt{font-size:.7rem;color:var(--muted);font-weight:600}
+.em-slot{min-height:36px;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.em-slot .d-chip{font-size:.78rem;padding:5px 10px}
 
-/* ============================================================
-   EX10: FILL BLANK TYPE
-   ============================================================ */
-.fib-list{display:flex;flex-direction:column;gap:16px}
-.fib-sent{font-size:1.1rem;font-weight:600;line-height:2.2; padding: 12px 18px; background: #F9FAFB; border-radius: 8px; border: 1px solid #f1f1f1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;}
-.fib-input{display:inline-block;padding:6px 12px;border:none;border-bottom:3px solid var(--border);background:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;width:140px;text-align:center;transition:.3s;vertical-align:middle;color:var(--text); border-radius: 4px 4px 0 0;}
-.fib-input:focus{outline:none;border-bottom-color:var(--purple); background: #f5f3ff;}
-.fib-input.ok-in{border-bottom-color:var(--green);color:#16A34A; background: #f0fff4;}
-.fib-input.nok-in{border-bottom-color:#EF4444;color:#DC2626; background: #fef2f2;}
+/* ===== EX10: FILL BLANK TYPE ===== */
+.fib-list{display:flex;flex-direction:column;gap:18px}
+.fib-sent{font-size:1.05rem;font-weight:600;line-height:2.2}
+.fib-input{display:inline-block;padding:5px 10px;border:none;border-bottom:3px solid var(--border);background:transparent;font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;width:130px;text-align:center;transition:.3s;vertical-align:middle;color:var(--text)}
+.fib-input:focus{outline:none;border-bottom-color:var(--purple)}
+.fib-input.ok-in{border-bottom-color:var(--green);color:#16A34A}
+.fib-input.nok-in{border-bottom-color:#EF4444;color:#DC2626}
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* FOOTER */
 footer{text-align:center;padding:30px 20px 60px}
 .pdf-btn{display:inline-flex;align-items:center;gap:12px;padding:18px 44px;background:linear-gradient(135deg,#FF6B6B,#FF4757);color:white;border:none;border-radius:50px;font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:700;cursor:pointer;transition:.3s;box-shadow:0 8px 32px rgba(255,107,107,.4)}
 .pdf-btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(255,107,107,.5)}
 .pdf-btn:active{transform:translateY(-1px)}
-.pdf-note{color:var(--muted);font-size:.85rem;margin-top:14px; font-weight: 600;}
-.pdf-loading{display:none;flex-direction:column;align-items:center;gap:12px;margin-top:20px}
+.pdf-note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.pdf-loading{display:none;flex-direction:column;align-items:center;gap:10px;margin-top:18px}
 .spinner{width:36px;height:36px;border:4px solid var(--border);border-top-color:var(--coral);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ============================================================
-   TOAST
-   ============================================================ */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--primary);color:white;padding:14px 28px;border-radius:50px;font-weight:700;font-size:.95rem;z-index:10000;transition:transform .3s ease;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--primary);color:white;padding:12px 26px;border-radius:50px;font-weight:700;font-size:.88rem;z-index:10000;transition:transform .3s ease;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
-/* ============================================================
-   PDF HIDDEN CONTAINER (SOLUCIÓN PARA PDF EN BLANCO Y ANTI-TRAMPAS)
-   ============================================================ */
-/* CRÍTICO: No usamos 'display: none'. Lo posicionamos fuera de la pantalla 
-   (-9999px) pero sigue siendo un bloque renderizado en el DOM. 
-   Esto garantiza que html2canvas siempre lo capture completo y con estilos. 
-*/
+/* ===== PDF CONTAINER — FIXED ===== */
 #pdf-wrap{
-  position:absolute;
-  left:-9999px;
-  top:0;
-  width:800px;
+  position:fixed;
+  left:-9999px;top:0;
+  width:780px;
   background:white;
-  font-family:'Nunito',sans-serif;
+  font-family:'Arial',sans-serif;
   color:#1A1A2E;
-  padding:40px;
-  z-index:-1000;
+  padding:32px;
+  font-size:13px;
+  line-height:1.5;
 }
-.pdf-h{background:linear-gradient(135deg,#1B3A6B,#0a1f40);color:white;padding:26px 32px;border-radius:12px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.pdf-hi h2{font-size:1.5rem;font-weight:800;margin-bottom:6px; font-family: 'Baloo 2', cursive;}
-.pdf-hi p{font-size:.85rem;opacity:.8}
-.pdf-tb{background:rgba(255,255,255,.15);padding:12px 20px;border-radius:9px;text-align:center}
-.pdf-tb .tn{font-size:.75rem;opacity:.8; font-weight: 700; text-transform: uppercase;}
-.pdf-tb .tv{font-size:1.05rem;font-weight:800;margin-top:4px}
-.pdf-stu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.pdf-si{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;padding:12px 16px}
-.pdf-sl{font-size:.7rem;color:#6B7280;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
-.pdf-sv{font-size:1rem;font-weight:700;margin-top:4px; color: #111827;}
-.pdf-sg{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;margin-bottom:12px;color:#1B3A6B; border-bottom: 2px solid #eee; padding-bottom: 8px;}
-.pdf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.pdf-row{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB}
-.pdf-rn{font-size:.9rem;color:#374151; font-weight: 600;}
-.pdf-rv{font-weight:800;font-size:1rem}
-.pdf-total{background:linear-gradient(135deg,#1B3A6B,#2D5A9E);color:white;border-radius:10px;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-.pdf-total span{font-size:.95rem;opacity:.9; font-weight: 600;}
-.pdf-total strong{font-size:1.4rem;font-weight:800}
-.pdf-footer-grade{position:absolute;bottom:12px;right:16px;font-size:.65rem;color:#9CA3AF;text-align:right;line-height:1.5; font-weight: 700;}
+.pdf-h{background:linear-gradient(135deg,#1B3A6B,#0a1f40);color:white;padding:22px 28px;border-radius:12px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.pdf-hi h2{font-size:18px;font-weight:800;margin-bottom:4px;color:white}
+.pdf-hi p{font-size:11px;opacity:.75;color:white}
+.pdf-tb{background:rgba(255,255,255,.15);padding:10px 18px;border-radius:9px;text-align:center}
+.pdf-tb .tn{font-size:10px;opacity:.7;color:white}
+.pdf-tb .tv{font-size:13px;font-weight:700;margin-top:2px;color:white}
+.pdf-stu{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.pdf-si{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;padding:10px 14px}
+.pdf-sl{font-size:10px;color:#6B7280;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.pdf-sv{font-size:14px;font-weight:700;margin-top:2px;color:#1A1A2E}
+.pdf-sg{font-size:15px;font-weight:700;margin-bottom:10px;color:#1B3A6B}
+.pdf-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.pdf-row{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:#F9FAFB;border-radius:8px;border:1px solid #E5E7EB}
+.pdf-rn{font-size:12px;color:#374151}
+.pdf-rv{font-weight:700;font-size:13px}
+.pdf-total{background:#1B3A6B;color:white;border-radius:10px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.pdf-total span{font-size:13px;opacity:.8;color:white}
+.pdf-total strong{font-size:17px;font-weight:800;color:white}
+.pdf-grade-footer{margin-top:16px;padding:6px 10px;background:#F3F4F6;border-radius:6px;font-size:9px;color:#9CA3AF;text-align:right}
 
-/* ============================================================
-   RESPONSIVE DESIGN (MOBILE)
-   ============================================================ */
+/* RESPONSIVE */
 @media(max-width:600px){
   .sform{grid-template-columns:1fr}
-  .match-item{min-width:90px;font-size:.85rem;padding:10px 12px}
-  .match-wrap{gap: 10px;}
+  .match-item{min-width:80px;font-size:.8rem;padding:8px 10px}
   .eo-cols{grid-template-columns:1fr}
   .em-targets{grid-template-columns:repeat(2,1fr)}
-  .ex-body{padding:20px 16px}
-  .ex-head{padding:16px}
-  .fib-sent { flex-direction: column; align-items: flex-start; }
-}
-@media(max-width:380px){
-  .em-targets{grid-template-columns:1fr}
+  .ex-body{padding:18px 14px}
+  .ex-head{padding:14px 16px}
+  .pdf-grid{grid-template-columns:1fr}
+  .pdf-stu{grid-template-columns:1fr}
+  .ws-cell{font-size:clamp(.55rem,3.5vw,.85rem)}
 }
 </style>
 </head>
@@ -324,11 +289,11 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="sform">
       <div class="fg">
         <label for="inp-name">Nombre completo</label>
-        <input type="text" id="inp-name" placeholder="Escribe tu nombre y apellido..." autocomplete="name">
+        <input type="text" id="inp-name" placeholder="Tu nombre aquí..." autocomplete="name">
       </div>
       <div class="fg">
-        <label for="inp-nie">NIE del estudiante</label>
-        <input type="text" id="inp-nie" placeholder="Ingresa tu número de carnet/NIE..." autocomplete="off">
+        <label for="inp-nie">NIE</label>
+        <input type="text" id="inp-nie" placeholder="Número de identificación..." autocomplete="off">
       </div>
     </div>
     <div class="prog-wrap">
@@ -337,30 +302,34 @@ footer{text-align:center;padding:30px 20px 60px}
     </div>
   </div>
 </header>
-<svg class="wave-sep" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<svg class="wave-sep" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:50px">
   <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#F0EDE8"/>
 </svg>
 
 <main>
 
+<!-- EX1: WORD SEARCH -->
 <div class="ex-card c1">
   <div class="ex-head">
     <div class="ex-num">1</div>
     <div class="ex-info">
       <div class="ex-title">Word Search — Sopa de Letras</div>
-      <div class="ex-sub">Encuentra los 8 números escondidos en la sopa de letras</div>
+      <div class="ex-sub">Encuentra los 8 números escondidos (horizontal y vertical)</div>
     </div>
     <div class="ex-ico">🔍</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Desliza o haz clic desde la primera hasta la última letra para seleccionar la palabra. (Horizontal o vertical).</div>
+    <div class="instr">Toca la primera letra y arrastra hasta la última para seleccionar.</div>
     <div class="ws-outer">
-      <div class="ws-grid" id="ws-grid"></div>
+      <div class="ws-grid-wrap">
+        <div class="ws-grid" id="ws-grid"></div>
+      </div>
       <div class="ws-words" id="ws-words"></div>
     </div>
   </div>
 </div>
 
+<!-- EX2: MATCH LINES -->
 <div class="ex-card c2">
   <div class="ex-head">
     <div class="ex-num">2</div>
@@ -371,17 +340,18 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="ex-ico">🖊️</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Toca una palabra a la izquierda y luego el número correcto a la derecha.</div>
+    <div class="instr">Haz clic en una palabra de la izquierda y luego en el número correcto.</div>
     <div class="match-wrap" id="match-wrap">
       <div class="match-col" id="match-left"></div>
       <svg id="match-svg"></svg>
       <div class="match-col" id="match-right"></div>
     </div>
-    <p class="match-hint">Toca primero la palabra → luego el número</p>
+    <p class="match-hint">Haz clic primero en la palabra → luego en el número</p>
     <button class="btn-reset" onclick="resetMatch()">↺ Resetear conexiones</button>
   </div>
 </div>
 
+<!-- EX3: DRAG FILL BLANKS -->
 <div class="ex-card c3">
   <div class="ex-head">
     <div class="ex-num">3</div>
@@ -392,42 +362,45 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="ex-ico">✋</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Mantén presionada una palabra del banco y arrástrala hacia el espacio vacío. Para devolverla, haz clic sobre el espacio lleno.</div>
+    <div class="instr">Arrastra las palabras del banco hacia los espacios ___.</div>
     <div class="word-bank" id="wb3" data-bank="3"></div>
     <div id="ex3-sents"></div>
   </div>
 </div>
 
+<!-- EX4: SCRAMBLE -->
 <div class="ex-card c4">
   <div class="ex-head">
     <div class="ex-num">4</div>
     <div class="ex-info">
-      <div class="ex-title">Unscramble — Ordenar Letras</div>
-      <div class="ex-sub">Toca las letras en el orden correcto para formar el número</div>
+      <div class="ex-title">Ordenar Letras — Unscramble</div>
+      <div class="ex-sub">Haz clic en las letras en el orden correcto para formar el número</div>
     </div>
     <div class="ex-ico">🔤</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Toca las letras desordenadas. Si te equivocas, toca la letra en la respuesta para devolverla.</div>
+    <div class="instr">Toca las letras en orden. Toca una letra en la respuesta para devolverla.</div>
     <div class="scr-items" id="scr-items"></div>
   </div>
 </div>
 
+<!-- EX5: EMOJI COUNT -->
 <div class="ex-card c5">
   <div class="ex-head">
     <div class="ex-num">5</div>
     <div class="ex-info">
-      <div class="ex-title">Emoji Count — Contar Emojis</div>
-      <div class="ex-sub">Cuenta los emojis y selecciona la respuesta correcta</div>
+      <div class="ex-title">Contar Emojis — Emoji Count</div>
+      <div class="ex-sub">Cuenta los emojis y selecciona la respuesta correcta en inglés</div>
     </div>
     <div class="ex-ico">🎯</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Cuenta cuidadosamente los emojis de cada fila y selecciona el número escrito en inglés.</div>
+    <div class="instr">Cuenta los emojis de cada fila y selecciona el número correcto.</div>
     <div class="cq-list" id="cq-list"></div>
   </div>
 </div>
 
+<!-- EX6: TRUE/FALSE -->
 <div class="ex-card c6">
   <div class="ex-head">
     <div class="ex-num">6</div>
@@ -438,78 +411,82 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="ex-ico">✅</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Selecciona <strong>True</strong> (Verdadero) o <strong>False</strong> (Falso) para cada afirmación.</div>
+    <div class="instr">Haz clic en <strong>True</strong> o <strong>False</strong> para cada oración.</div>
     <div class="tf-list" id="tf-list"></div>
   </div>
 </div>
 
+<!-- EX7: DROPDOWN -->
 <div class="ex-card c7">
   <div class="ex-head">
     <div class="ex-num">7</div>
     <div class="ex-info">
-      <div class="ex-title">Dropdown — Menú Desplegable</div>
-      <div class="ex-sub">Selecciona el número correcto en cada oración</div>
+      <div class="ex-title">Fill in the Gap — Menú Desplegable</div>
+      <div class="ex-sub">Selecciona el número correcto para completar cada oración</div>
     </div>
     <div class="ex-ico">📋</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Haz clic en la flechita (▾) dentro de la oración para elegir la respuesta correcta.</div>
+    <div class="instr">Usa el menú (▾) para elegir el número que completa correctamente cada oración.</div>
     <div class="dd-list" id="dd-list"></div>
   </div>
 </div>
 
+<!-- EX8: EVEN/ODD -->
 <div class="ex-card c8">
   <div class="ex-head">
     <div class="ex-num">8</div>
     <div class="ex-info">
-      <div class="ex-title">Sort It! — Even or Odd</div>
-      <div class="ex-sub">Arrastra cada número a "Even" (Par) u "Odd" (Impar)</div>
+      <div class="ex-title">Clasificar — Even or Odd</div>
+      <div class="ex-sub">Arrastra cada número a Par (Even) o Impar (Odd)</div>
     </div>
     <div class="ex-ico">🎲</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Arrastra las fichas numéricas al grupo correcto. Even = par (2,4,6...) · Odd = impar (1,3,5...).</div>
+    <div class="instr">Arrastra los números al grupo correcto. Even = par · Odd = impar.</div>
     <div class="eo-bank" id="eo-bank" data-bank="8"></div>
     <div class="eo-cols">
-      <div class="eo-col eo-even">
-        <div class="eo-col-h">🔵 Even (Par)</div>
+      <div class="eo-col eo-even" id="eo-col-even" data-target="even">
+        <div class="eo-col-h">🔵 Even — Par</div>
         <div class="eo-drop" id="eo-even" data-target="even"></div>
       </div>
-      <div class="eo-col eo-odd">
-        <div class="eo-col-h">🟡 Odd (Impar)</div>
+      <div class="eo-col eo-odd" id="eo-col-odd" data-target="odd">
+        <div class="eo-col-h">🟡 Odd — Impar</div>
         <div class="eo-drop" id="eo-odd" data-target="odd"></div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- EX9: EMOJI MATCH -->
 <div class="ex-card c9">
   <div class="ex-head">
     <div class="ex-num">9</div>
     <div class="ex-info">
-      <div class="ex-title">Match Emoji — Emparejar Cantidad</div>
-      <div class="ex-sub">Arrastra la palabra escrita hacia su grupo de emojis</div>
+      <div class="ex-title">Emparejar — Match the Number</div>
+      <div class="ex-sub">Arrastra la palabra al grupo de emojis que corresponde</div>
     </div>
     <div class="ex-ico">🌟</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Cuenta los emojis de cada cuadro y arrastra la palabra correspondiente hacia él. Haz clic en la palabra para devolverla.</div>
+    <div class="instr">Cuenta los emojis de cada recuadro y arrastra la palabra correcta hacia él.</div>
     <div class="em-bank" id="em-bank" data-bank="9"></div>
     <div class="em-targets" id="em-targets"></div>
   </div>
 </div>
 
+<!-- EX10: FILL BLANK TYPE -->
 <div class="ex-card c10">
   <div class="ex-head">
     <div class="ex-num">10</div>
     <div class="ex-info">
-      <div class="ex-title">Fill the Blank — Escribe la Respuesta</div>
-      <div class="ex-sub">Resuelve y escribe el resultado en inglés (letras)</div>
+      <div class="ex-title">Write the Answer — Escribe la Respuesta</div>
+      <div class="ex-sub">Completa las oraciones escribiendo el número en inglés</div>
     </div>
     <div class="ex-ico">✍️</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Escribe el número en palabras utilizando tu teclado (ej. "twenty"). No importan las mayúsculas.</div>
+    <div class="instr">Escribe el número en inglés. No importan mayúsculas ni espacios extra.</div>
     <div class="fib-list" id="fib-list"></div>
   </div>
 </div>
@@ -520,13 +497,14 @@ footer{text-align:center;padding:30px 20px 60px}
   <button class="pdf-btn" id="pdf-btn" onclick="generatePDF()">
     <span>📄</span> Descargar mi examen en PDF
   </button>
-  <p class="pdf-note">Asegúrate de haber completado tu Nombre y NIE, además de contestar todo, antes de descargar.</p>
+  <p class="pdf-note">Asegúrate de completar tu Nombre y NIE antes de descargar.</p>
   <div class="pdf-loading" id="pdf-loading">
     <div class="spinner"></div>
-    <span style="color:var(--muted);font-size:.9rem;font-weight:700;">Procesando evaluación y generando PDF...</span>
+    <span style="color:var(--muted);font-size:.85rem">Generando PDF, espera un momento…</span>
   </div>
 </footer>
 
+<!-- PDF CONTAINER — rendered off-screen, captured by html2pdf -->
 <div id="pdf-wrap">
   <div class="pdf-h">
     <div class="pdf-hi">
@@ -542,155 +520,146 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="pdf-si"><div class="pdf-sl">Nombre del Estudiante</div><div class="pdf-sv" id="pdf-name">—</div></div>
     <div class="pdf-si"><div class="pdf-sl">NIE</div><div class="pdf-sv" id="pdf-nie">—</div></div>
     <div class="pdf-si"><div class="pdf-sl">Sección / Grado</div><div class="pdf-sv">A · Séptimo</div></div>
-    <div class="pdf-si"><div class="pdf-sl">Fecha y Hora</div><div class="pdf-sv" id="pdf-date">—</div></div>
+    <div class="pdf-si"><div class="pdf-sl">Fecha</div><div class="pdf-sv" id="pdf-date">—</div></div>
   </div>
-  <div class="pdf-sg">📊 Resumen de Resultados por Ejercicio</div>
+  <div class="pdf-sg">📊 Resultados por Ejercicio</div>
   <div class="pdf-grid" id="pdf-scores"></div>
   <div class="pdf-total">
-    <span>Total de aciertos obtenidos</span>
+    <span>Total obtenido</span>
     <strong id="pdf-total-str">—</strong>
   </div>
-  <div class="pdf-footer-grade" id="pdf-grade-footer"></div>
+  <div class="pdf-grade-footer" id="pdf-grade-footer"></div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* --- ESTADO Y ALMACENAMIENTO (LOCALSTORAGE) --- */
-const STATE_KEY = 'coeduca_numbers_final_v2';
-let state = {
-  name: '', nie: '',
-  ex1: [], ex2: {}, ex3: {}, ex4: {}, ex5: {}, 
-  ex6: {}, ex7: {}, ex8: { bank: [], even: [], odd: [] }, 
-  ex9: {}, ex10: {}
-};
+/* ============================================================
+   STATE & STORAGE
+   ============================================================ */
+const STATE_KEY='coeduca_numbers_v3';
+let state={name:'',nie:'',ex1:[],ex2:{},ex3:{},ex4:{},ex5:{},ex6:{},ex7:{},
+  ex8:{bank:[],even:[],odd:[]},ex9:{},ex10:{}};
 
-function saveState() {
-  state.name = document.getElementById('inp-name').value;
-  state.nie = document.getElementById('inp-nie').value;
-  localStorage.setItem(STATE_KEY, JSON.stringify(state));
+function saveState(){
+  state.name=document.getElementById('inp-name').value;
+  state.nie=document.getElementById('inp-nie').value;
+  try{localStorage.setItem(STATE_KEY,JSON.stringify(state));}catch(e){}
   updateProgress();
 }
-
-function loadState() {
-  try {
-    const s = localStorage.getItem(STATE_KEY);
-    if (s) state = Object.assign(state, JSON.parse(s));
-  } catch(e) { console.error("Error cargando LocalStorage"); }
+function loadState(){
+  try{const s=localStorage.getItem(STATE_KEY);if(s)state=Object.assign(state,JSON.parse(s));}catch(e){}
+}
+function updateProgress(){
+  const score=calculateScore();
+  const pct=Math.round((score.total/score.maxTotal)*100);
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('prog-txt').textContent=pct+'% completado';
 }
 
-function updateProgress() {
-  const score = calculateScore();
-  const pct = Math.round((score.total / score.maxTotal) * 100);
-  document.getElementById('prog-bar').style.width = pct + '%';
-  document.getElementById('prog-txt').textContent = pct + '% completado';
+/* ============================================================
+   DRAG & DROP ENGINE (mouse + touch)
+   ============================================================ */
+let drag={active:false,ghost:null,srcEl:null,srcGroup:null,srcId:null};
+
+function makeDraggable(el,group,id){
+  el.dataset.dragGroup=group;el.dataset.dragId=id;
+  el.addEventListener('mousedown',dndStart,{passive:false});
+  el.addEventListener('touchstart',dndStart,{passive:false});
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2600);
-}
-
-/* --- MOTOR DRAG & DROP MULTI-DISPOSITIVO --- */
-let drag = { active: false, ghost: null, srcEl: null, srcGroup: null, srcId: null };
-
-function makeDraggable(el, group, id) {
-  el.dataset.dragGroup = group; el.dataset.dragId = id;
-  el.addEventListener('mousedown', dndStart, { passive: false });
-  el.addEventListener('touchstart', dndStart, { passive: false });
-}
-
-function dndStart(e) {
+function dndStart(e){
   e.preventDefault();
-  const touch = e.touches ? e.touches[0] : e;
-  drag.srcEl = e.currentTarget; drag.srcGroup = drag.srcEl.dataset.dragGroup; drag.srcId = drag.srcEl.dataset.dragId;
-  drag.active = true;
-
-  const g = drag.srcEl.cloneNode(true);
-  g.classList.add('d-ghost'); g.style.width = drag.srcEl.offsetWidth + 'px';
-  document.body.appendChild(g); drag.ghost = g;
+  const touch=e.touches?e.touches[0]:e;
+  drag.srcEl=e.currentTarget;
+  drag.srcGroup=drag.srcEl.dataset.dragGroup;
+  drag.srcId=drag.srcEl.dataset.dragId;
+  drag.active=true;
+  const g=drag.srcEl.cloneNode(true);
+  g.classList.add('d-ghost');
+  g.style.width=drag.srcEl.offsetWidth+'px';
+  g.style.pointerEvents='none';
+  document.body.appendChild(g);
+  drag.ghost=g;
   drag.srcEl.classList.add('dragging-src');
-  
-  positionGhost(touch.clientX, touch.clientY);
-
-  document.addEventListener('mousemove', dndMove, { passive: false });
-  document.addEventListener('touchmove', dndMove, { passive: false });
-  document.addEventListener('mouseup', dndEnd);
-  document.addEventListener('touchend', dndEnd);
+  positionGhost(touch.clientX,touch.clientY);
+  document.addEventListener('mousemove',dndMove,{passive:false});
+  document.addEventListener('touchmove',dndMove,{passive:false});
+  document.addEventListener('mouseup',dndEnd);
+  document.addEventListener('touchend',dndEnd);
 }
 
-function dndMove(e) {
-  if (!drag.active) return;
-  e.preventDefault(); 
-  const touch = e.touches ? e.touches[0] : e;
-  positionGhost(touch.clientX, touch.clientY);
+function dndMove(e){
+  if(!drag.active)return;
+  e.preventDefault();
+  const touch=e.touches?e.touches[0]:e;
+  positionGhost(touch.clientX,touch.clientY);
   autoScroll(touch.clientY);
-  highlightDropTarget(touch.clientX, touch.clientY);
+  highlightDropTarget(touch.clientX,touch.clientY);
 }
 
-function positionGhost(x, y) {
-  if (!drag.ghost) return;
-  drag.ghost.style.left = (x - drag.ghost.offsetWidth / 2) + 'px';
-  drag.ghost.style.top = (y - drag.ghost.offsetHeight / 2) + 'px';
+function positionGhost(x,y){
+  const g=drag.ghost;if(!g)return;
+  g.style.left=(x-g.offsetWidth/2)+'px';
+  g.style.top=(y-g.offsetHeight/2)+'px';
 }
 
-function autoScroll(cy) {
-  const ZONE = 70, SPD = 12;
-  if (cy < ZONE) window.scrollBy(0, -SPD);
-  else if (cy > window.innerHeight - ZONE) window.scrollBy(0, SPD);
+function autoScroll(cy){
+  const ZONE=70,SPD=9;
+  if(cy<ZONE)window.scrollBy(0,-SPD);
+  else if(cy>window.innerHeight-ZONE)window.scrollBy(0,SPD);
 }
 
-function highlightDropTarget(x, y) {
-  document.querySelectorAll('.drop-blank.over, .eo-drop.over, .em-target.over, .word-bank.drag-over-bank')
-    .forEach(el => el.classList.remove('over','drag-over-bank'));
-  
-  drag.ghost.style.display = 'none';
-  const el = document.elementFromPoint(x, y);
-  drag.ghost.style.display = '';
-  
-  if (!el) return;
-  const t = el.closest('[data-droptarget]') || el.closest('[data-bank]') || el.closest('[data-target]');
-  if (t) {
-    if (t.dataset.droptarget) t.classList.add('over');
-    else if (t.dataset.bank) t.classList.add('drag-over-bank');
-    else if (t.dataset.target) t.classList.add('over');
+function getDropTargets(){
+  return document.querySelectorAll('.drop-blank,.eo-col,.eo-drop,.em-target,.word-bank,.eo-bank,.em-bank');
+}
+
+function highlightDropTarget(x,y){
+  getDropTargets().forEach(el=>{
+    el.classList.remove('over','drag-over-bank');
+  });
+  drag.ghost.style.display='none';
+  const el=document.elementFromPoint(x,y);
+  drag.ghost.style.display='';
+  if(!el)return;
+  const t=el.closest('[data-droptarget],[data-bank],[data-target]');
+  if(t){
+    if(t.dataset.droptarget)t.classList.add('over');
+    else if(t.dataset.bank)t.classList.add('over');
+    else if(t.dataset.target)t.classList.add('over');
   }
 }
 
-function dndEnd(e) {
-  if (!drag.active) return;
-  drag.active = false;
-  const touch = e.changedTouches ? e.changedTouches[0] : e;
-
-  document.querySelectorAll('.drop-blank.over,.eo-drop.over,.em-target.over,.word-bank.drag-over-bank')
-    .forEach(el => el.classList.remove('over','drag-over-bank'));
-
-  drag.ghost.style.display = 'none';
-  const el = document.elementFromPoint(touch.clientX, touch.clientY);
-  drag.ghost.remove(); drag.ghost = null;
+function dndEnd(e){
+  if(!drag.active)return;
+  drag.active=false;
+  const touch=e.changedTouches?e.changedTouches[0]:e;
+  getDropTargets().forEach(el=>el.classList.remove('over','drag-over-bank'));
+  drag.ghost.style.display='none';
+  const el=document.elementFromPoint(touch.clientX,touch.clientY);
+  drag.ghost.style.display='';
+  drag.ghost.remove();drag.ghost=null;
   drag.srcEl.classList.remove('dragging-src');
-
-  if (el) {
-    const target = el.closest('[data-droptarget],[data-bank],[data-target]');
-    if (target) handleDrop(drag.srcEl, target, drag.srcGroup, drag.srcId);
+  if(el){
+    const target=el.closest('[data-droptarget],[data-bank],[data-target]');
+    if(target)handleDrop(drag.srcEl,target,drag.srcGroup,drag.srcId);
   }
-
-  document.removeEventListener('mousemove', dndMove);
-  document.removeEventListener('touchmove', dndMove);
-  document.removeEventListener('mouseup', dndEnd);
-  document.removeEventListener('touchend', dndEnd);
+  document.removeEventListener('mousemove',dndMove);
+  document.removeEventListener('touchmove',dndMove);
+  document.removeEventListener('mouseup',dndEnd);
+  document.removeEventListener('touchend',dndEnd);
 }
 
-function handleDrop(srcEl, target, group, id) {
-  if (group === '3') dropEx3(srcEl, target, id);
-  else if (group === '8') dropEx8(srcEl, target, id);
-  else if (group === '9') dropEx9(srcEl, target, id);
+function handleDrop(srcEl,target,group,id){
+  if(group==='3')dropEx3(srcEl,target,id);
+  else if(group==='8')dropEx8(srcEl,target,id);
+  else if(group==='9')dropEx9(srcEl,target,id);
 }
 
-/* --- EJ 1: SOPA DE LETRAS --- */
-const WS_GRID = [
+/* ============================================================
+   EXERCISE 1: WORD SEARCH
+   ============================================================ */
+const WS_GRID_DATA=[
   ['Z','E','R','O','B','C','D','G','H','F'],
   ['A','J','K','L','M','P','T','W','O','I'],
   ['T','H','R','E','E','F','G','H','J','V'],
@@ -702,258 +671,391 @@ const WS_GRID = [
   ['O','P','Q','R','S','T','O','N','E','U'],
   ['V','W','X','Y','Z','A','B','C','D','G']
 ];
-const WS_WORDS = {
-  ZERO: [{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3}],
-  TWO:  [{r:1,c:6},{r:1,c:7},{r:1,c:8}],
+const WS_WORDS={
+  ZERO:[{r:0,c:0},{r:0,c:1},{r:0,c:2},{r:0,c:3}],
+  TWO: [{r:1,c:6},{r:1,c:7},{r:1,c:8}],
   THREE:[{r:2,c:0},{r:2,c:1},{r:2,c:2},{r:2,c:3},{r:2,c:4}],
-  TEN:  [{r:4,c:0},{r:4,c:1},{r:4,c:2}],
-  NINE: [{r:6,c:0},{r:6,c:1},{r:6,c:2},{r:6,c:3}],
-  ONE:  [{r:8,c:6},{r:8,c:7},{r:8,c:8}],
-  FIVE: [{r:0,c:9},{r:1,c:9},{r:2,c:9},{r:3,c:9}],
-  SIX:  [{r:5,c:5},{r:6,c:5},{r:7,c:5}]
+  TEN: [{r:4,c:0},{r:4,c:1},{r:4,c:2}],
+  NINE:[{r:6,c:0},{r:6,c:1},{r:6,c:2},{r:6,c:3}],
+  ONE: [{r:8,c:6},{r:8,c:7},{r:8,c:8}],
+  FIVE:[{r:0,c:9},{r:1,c:9},{r:2,c:9},{r:3,c:9}],
+  SIX: [{r:5,c:5},{r:6,c:5},{r:7,c:5}]
 };
-let wsSelStart = null, wsSelCells = [], wsDragging = false;
+let wsSelStart=null,wsSelCells=[],wsDragging=false;
 
-function initWordSearch() {
-  const grid = document.getElementById('ws-grid'); grid.innerHTML = '';
-  WS_GRID.forEach((row, r) => {
-    row.forEach((letter, c) => {
-      const cell = document.createElement('div'); cell.className = 'ws-cell'; cell.textContent = letter; cell.dataset.r = r; cell.dataset.c = c;
-      if (state.ex1.some(w => WS_WORDS[w] && WS_WORDS[w].some(p => p.r===r&&p.c===c))) cell.classList.add('found');
+function initWordSearch(){
+  const grid=document.getElementById('ws-grid');
+  grid.innerHTML='';
+  WS_GRID_DATA.forEach((row,r)=>{
+    row.forEach((letter,c)=>{
+      const cell=document.createElement('div');
+      cell.className='ws-cell';
+      cell.textContent=letter;
+      cell.dataset.r=r;cell.dataset.c=c;
+      if(state.ex1.some(w=>WS_WORDS[w]&&WS_WORDS[w].some(p=>p.r===r&&p.c===c)))
+        cell.classList.add('found');
       grid.appendChild(cell);
     });
   });
-
-  const words = document.getElementById('ws-words'); words.innerHTML = '';
-  Object.keys(WS_WORDS).forEach(w => {
-    const tag = document.createElement('div'); tag.className = 'ws-tag' + (state.ex1.includes(w) ? ' found' : ''); tag.textContent = w; tag.id = 'ws-tag-' + w;
+  const words=document.getElementById('ws-words');
+  words.innerHTML='';
+  Object.keys(WS_WORDS).forEach(w=>{
+    const tag=document.createElement('div');
+    tag.className='ws-tag'+(state.ex1.includes(w)?' found':'');
+    tag.textContent=w;tag.id='ws-tag-'+w;
     words.appendChild(tag);
   });
+  grid.addEventListener('mousedown',wsStart);
+  grid.addEventListener('mousemove',wsMove);
+  document.addEventListener('mouseup',wsEnd);
+  grid.addEventListener('touchstart',wsStart,{passive:false});
+  grid.addEventListener('touchmove',wsMove,{passive:false});
+  document.addEventListener('touchend',wsEnd,{passive:false});
+}
 
-  grid.addEventListener('mousedown', wsStart); grid.addEventListener('mousemove', wsMove); document.addEventListener('mouseup', wsEnd);
-  grid.addEventListener('touchstart', wsStart, { passive: false }); grid.addEventListener('touchmove', wsMove, { passive: false }); document.addEventListener('touchend', wsEnd, { passive: false });
+function wsGetCell(x,y){
+  const el=document.elementFromPoint(x,y);
+  return el&&el.classList.contains('ws-cell')?el:null;
 }
-function wsGetCell(x, y) {
-  const el = document.elementFromPoint(x, y); return el && el.classList.contains('ws-cell') ? el : null;
+function wsStart(e){
+  e.preventDefault();
+  const touch=e.touches?e.touches[0]:e;
+  const cell=wsGetCell(touch.clientX,touch.clientY);
+  if(!cell)return;
+  wsDragging=true;
+  wsSelStart={r:+cell.dataset.r,c:+cell.dataset.c};
+  wsHighlight([cell]);
 }
-function wsStart(e) {
-  const touch = e.touches ? e.touches[0] : e; const cell = wsGetCell(touch.clientX, touch.clientY);
-  if (!cell) return;
-  e.preventDefault(); wsDragging = true; wsSelStart = { r: +cell.dataset.r, c: +cell.dataset.c }; wsHighlight([cell]);
-}
-function wsMove(e) {
-  if (!wsDragging) return;
-  e.preventDefault(); const touch = e.touches ? e.touches[0] : e; const endCell = wsGetCell(touch.clientX, touch.clientY);
-  if (!endCell) return;
-  const er = +endCell.dataset.r, ec = +endCell.dataset.c, sr = wsSelStart.r, sc = wsSelStart.c, dr = er - sr, dc = ec - sc, len = Math.max(Math.abs(dr), Math.abs(dc));
-  if (len === 0) { wsHighlight([wsGetGridCell(sr,sc)]); return; }
-  if (dr !== 0 && dc !== 0) return;
-  const stepR = dr===0 ? 0 : Math.sign(dr), stepC = dc===0 ? 0 : Math.sign(dc), cells = [];
-  for (let i = 0; i <= len; i++) { const cell = wsGetGridCell(sr + i*stepR, sc + i*stepC); if (cell) cells.push(cell); }
+function wsMove(e){
+  if(!wsDragging)return;
+  e.preventDefault();
+  const touch=e.touches?e.touches[0]:e;
+  const endCell=wsGetCell(touch.clientX,touch.clientY);
+  if(!endCell)return;
+  const er=+endCell.dataset.r,ec=+endCell.dataset.c;
+  const sr=wsSelStart.r,sc=wsSelStart.c;
+  const dr=er-sr,dc=ec-sc;
+  const len=Math.max(Math.abs(dr),Math.abs(dc));
+  if(len===0){wsHighlight([wsGetGridCell(sr,sc)]);return;}
+  if(dr!==0&&dc!==0)return;
+  const stepR=dr===0?0:Math.sign(dr);
+  const stepC=dc===0?0:Math.sign(dc);
+  const cells=[];
+  for(let i=0;i<=len;i++){
+    const cell=wsGetGridCell(sr+i*stepR,sc+i*stepC);
+    if(cell)cells.push(cell);
+  }
   wsHighlight(cells);
 }
-function wsEnd(e) {
-  if (!wsDragging) return;
-  wsDragging = false;
-  const word = wsSelCells.map(c => c.textContent).join(''), revWord = wsSelCells.map(c => c.textContent).reverse().join('');
-  const found = WS_WORDS[word] ? word : (WS_WORDS[revWord] ? revWord : null);
-  if (found && !state.ex1.includes(found)) {
-    state.ex1.push(found); wsSelCells.forEach(c => c.classList.add('found')); document.getElementById('ws-tag-' + found).classList.add('found');
-    showToast('¡Encontraste ' + found + '! 🎉'); saveState();
+function wsEnd(e){
+  if(!wsDragging)return;
+  wsDragging=false;
+  const word=wsSelCells.map(c=>c.textContent).join('');
+  const revWord=wsSelCells.map(c=>c.textContent).reverse().join('');
+  const found=WS_WORDS[word]?word:(WS_WORDS[revWord]?revWord:null);
+  if(found&&!state.ex1.includes(found)){
+    state.ex1.push(found);
+    wsSelCells.forEach(c=>c.classList.add('found'));
+    document.getElementById('ws-tag-'+found).classList.add('found');
+    showToast('¡Encontraste '+found+'! 🎉');
+    saveState();
   }
-  wsHighlight([]); wsSelCells = [];
+  wsHighlight([]);wsSelCells=[];
 }
-function wsHighlight(cells) {
-  document.querySelectorAll('.ws-cell.sel').forEach(c => c.classList.remove('sel')); wsSelCells = cells;
-  cells.forEach(c => { if (c && !c.classList.contains('found')) c.classList.add('sel'); });
+function wsHighlight(cells){
+  document.querySelectorAll('.ws-cell.sel').forEach(c=>c.classList.remove('sel'));
+  wsSelCells=cells;
+  cells.forEach(c=>{if(c&&!c.classList.contains('found'))c.classList.add('sel');});
 }
-function wsGetGridCell(r, c) { return document.querySelector(`.ws-cell[data-r="${r}"][data-c="${c}"]`); }
+function wsGetGridCell(r,c){
+  return document.querySelector(`.ws-cell[data-r="${r}"][data-c="${c}"]`);
+}
 
-/* --- EJ 2: MATCH --- */
-const MATCH_LEFT = ['ELEVEN','THIRTEEN','FIFTEEN','SEVENTEEN','NINETEEN'];
-const MATCH_RIGHT = ['19','15','11','17','13'];
-const MATCH_CORRECT = { ELEVEN:'11', THIRTEEN:'13', FIFTEEN:'15', SEVENTEEN:'17', NINETEEN:'19' };
-const PAIR_COLORS = ['#FF6B6B','#4D96FF','#6BCB77','#FFD93D','#9B5DE5'];
-let matchPending = null;
+/* ============================================================
+   EXERCISE 2: MATCH LINES
+   ============================================================ */
+const MATCH_LEFT=['ELEVEN','THIRTEEN','FIFTEEN','SEVENTEEN','NINETEEN'];
+const MATCH_RIGHT=['19','15','11','17','13'];
+const MATCH_CORRECT={ELEVEN:'11',THIRTEEN:'13',FIFTEEN:'15',SEVENTEEN:'17',NINETEEN:'19'};
+const PAIR_COLORS=['#FF6B6B','#4D96FF','#6BCB77','#FFD93D','#9B5DE5'];
+let matchPending=null;
 
-function initMatch() {
-  const leftCol = document.getElementById('match-left'), rightCol = document.getElementById('match-right');
-  leftCol.innerHTML = ''; rightCol.innerHTML = '';
-
-  MATCH_LEFT.forEach(word => {
-    const btn = document.createElement('div'); btn.className = 'match-item'; btn.textContent = word; btn.dataset.id = word;
-    btn.addEventListener('click', () => matchClickLeft(btn)); leftCol.appendChild(btn);
+function initMatch(){
+  const leftCol=document.getElementById('match-left');
+  const rightCol=document.getElementById('match-right');
+  leftCol.innerHTML='';rightCol.innerHTML='';
+  MATCH_LEFT.forEach(word=>{
+    const btn=document.createElement('div');
+    btn.className='match-item';btn.textContent=word;btn.dataset.id=word;
+    btn.addEventListener('click',()=>matchClickLeft(btn));
+    leftCol.appendChild(btn);
   });
-  MATCH_RIGHT.forEach(num => {
-    const btn = document.createElement('div'); btn.className = 'match-item'; btn.textContent = num; btn.dataset.id = num;
-    btn.addEventListener('click', () => matchClickRight(btn)); rightCol.appendChild(btn);
+  MATCH_RIGHT.forEach(num=>{
+    const btn=document.createElement('div');
+    btn.className='match-item';btn.textContent=num;btn.dataset.id=num;
+    btn.addEventListener('click',()=>matchClickRight(btn));
+    rightCol.appendChild(btn);
   });
-  if (state.ex2 && Object.keys(state.ex2).length) {
-    Object.keys(state.ex2).forEach((lid, i) => { applyMatchColor(lid, state.ex2[lid], PAIR_COLORS[i % PAIR_COLORS.length]); });
-    setTimeout(drawAllMatchLines, 150);
+  if(state.ex2&&Object.keys(state.ex2).length){
+    Object.keys(state.ex2).forEach((lid,i)=>{
+      const rid=state.ex2[lid];
+      applyMatchColor(lid,rid,PAIR_COLORS[i%PAIR_COLORS.length]);
+    });
+    setTimeout(drawAllMatchLines,100);
   }
 }
-function matchClickLeft(btn) {
-  document.querySelectorAll('.match-item.sel-left').forEach(b => b.classList.remove('sel-left'));
-  if (matchPending === btn) { matchPending = null; return; }
-  matchPending = btn; btn.classList.add('sel-left');
+function matchClickLeft(btn){
+  document.querySelectorAll('.match-item.sel-left').forEach(b=>b.classList.remove('sel-left'));
+  if(matchPending===btn){matchPending=null;return;}
+  matchPending=btn;btn.classList.add('sel-left');
 }
-function matchClickRight(btn) {
-  if (!matchPending) return;
-  const lid = matchPending.dataset.id, rid = btn.dataset.id;
-  Object.keys(state.ex2).forEach(k => { if (k === lid || state.ex2[k] === rid) { clearMatchColor(k, state.ex2[k]); delete state.ex2[k]; } });
-  state.ex2[lid] = rid; applyMatchColor(lid, rid, PAIR_COLORS[(Object.values(state.ex2).length - 1) % PAIR_COLORS.length]);
-  matchPending.classList.remove('sel-left'); matchPending = null; drawAllMatchLines(); saveState();
+function matchClickRight(btn){
+  if(!matchPending)return;
+  const lid=matchPending.dataset.id,rid=btn.dataset.id;
+  Object.keys(state.ex2).forEach(k=>{
+    if(k===lid||state.ex2[k]===rid){clearMatchColor(k,state.ex2[k]);delete state.ex2[k];}
+  });
+  state.ex2[lid]=rid;
+  const colorIdx=Object.keys(state.ex2).length-1;
+  applyMatchColor(lid,rid,PAIR_COLORS[colorIdx%PAIR_COLORS.length]);
+  matchPending.classList.remove('sel-left');matchPending=null;
+  drawAllMatchLines();saveState();
 }
-function applyMatchColor(lid, rid, color) {
-  const le = document.querySelector(`.match-item[data-id="${lid}"]`), re = document.querySelector(`.match-item[data-id="${rid}"]`);
-  if (le) { le.style.background = color+'22'; le.style.borderColor = color; le.dataset.color = color; }
-  if (re) { re.style.background = color+'22'; re.style.borderColor = color; re.dataset.color = color; }
+function applyMatchColor(lid,rid,color){
+  const le=document.querySelector(`.match-item[data-id="${lid}"]`);
+  const re=document.querySelector(`.match-item[data-id="${rid}"]`);
+  if(le){le.style.background=color+'22';le.style.borderColor=color;le.dataset.color=color;}
+  if(re){re.style.background=color+'22';re.style.borderColor=color;re.dataset.color=color;}
 }
-function clearMatchColor(lid, rid) {
-  const le = document.querySelector(`.match-item[data-id="${lid}"]`), re = document.querySelector(`.match-item[data-id="${rid}"]`);
-  if (le) { le.style.background=''; le.style.borderColor=''; delete le.dataset.color; }
-  if (re) { re.style.background=''; re.style.borderColor=''; delete re.dataset.color; }
+function clearMatchColor(lid,rid){
+  const le=document.querySelector(`.match-item[data-id="${lid}"]`);
+  const re=document.querySelector(`.match-item[data-id="${rid}"]`);
+  if(le){le.style.background='';le.style.borderColor='';delete le.dataset.color;}
+  if(re){re.style.background='';re.style.borderColor='';delete re.dataset.color;}
 }
-function drawAllMatchLines() {
-  const svg = document.getElementById('match-svg'); svg.innerHTML = '';
-  const wrap = document.getElementById('match-wrap'), wr = wrap.getBoundingClientRect();
-  Object.keys(state.ex2).forEach((lid, i) => {
-    const le = document.querySelector(`.match-item[data-id="${lid}"]`), re = document.querySelector(`.match-item[data-id="${state.ex2[lid]}"]`);
-    if (!le || !re) return;
-    const lr = le.getBoundingClientRect(), rr = re.getBoundingClientRect(), x1 = lr.right - wr.left, y1 = lr.top + lr.height/2 - wr.top, x2 = rr.left - wr.left, y2 = rr.top + rr.height/2 - wr.top;
-    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1',x1); line.setAttribute('y1',y1); line.setAttribute('x2',x2); line.setAttribute('y2',y2);
-    line.setAttribute('stroke', le.dataset.color || PAIR_COLORS[i % PAIR_COLORS.length]); line.setAttribute('stroke-width','3'); line.setAttribute('stroke-linecap','round'); line.setAttribute('stroke-dasharray','6,3');
+function drawAllMatchLines(){
+  const svg=document.getElementById('match-svg');
+  svg.innerHTML='';
+  const wrap=document.getElementById('match-wrap');
+  const wr=wrap.getBoundingClientRect();
+  Object.keys(state.ex2).forEach((lid,i)=>{
+    const rid=state.ex2[lid];
+    const le=document.querySelector(`.match-item[data-id="${lid}"]`);
+    const re=document.querySelector(`.match-item[data-id="${rid}"]`);
+    if(!le||!re)return;
+    const lr=le.getBoundingClientRect(),rr=re.getBoundingClientRect();
+    const x1=lr.right-wr.left,y1=lr.top+lr.height/2-wr.top;
+    const x2=rr.left-wr.left,y2=rr.top+rr.height/2-wr.top;
+    const color=le.dataset.color||PAIR_COLORS[i%PAIR_COLORS.length];
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',x1);line.setAttribute('y1',y1);
+    line.setAttribute('x2',x2);line.setAttribute('y2',y2);
+    line.setAttribute('stroke',color);line.setAttribute('stroke-width','3');
+    line.setAttribute('stroke-linecap','round');line.setAttribute('stroke-dasharray','6,3');
     svg.appendChild(line);
   });
 }
-function resetMatch() {
-  document.querySelectorAll('.match-item').forEach(b => { b.style.background=''; b.style.borderColor=''; delete b.dataset.color; b.classList.remove('sel-left'); });
-  document.getElementById('match-svg').innerHTML = ''; state.ex2 = {}; matchPending = null; saveState();
+function resetMatch(){
+  document.querySelectorAll('.match-item').forEach(b=>{
+    b.style.background='';b.style.borderColor='';delete b.dataset.color;b.classList.remove('sel-left');
+  });
+  document.getElementById('match-svg').innerHTML='';
+  state.ex2={};matchPending=null;saveState();
 }
-window.addEventListener('resize', () => { if(Object.keys(state.ex2).length) drawAllMatchLines(); });
+window.addEventListener('resize',()=>{if(Object.keys(state.ex2).length)drawAllMatchLines();});
 
-/* --- EJ 3: DRAG FILL BLANKS --- */
-const EX3_BANK_WORDS = ['FIVE','SEVEN','TWELVE','THREE','TWO','TEN','FOUR','EIGHT'];
-const EX3_SENTS = [
-  { id:'b1', pre:'I have', post:'fingers on one hand.', ans:'FIVE' },
-  { id:'b2', pre:'A week has', post:'days.', ans:'SEVEN' },
-  { id:'b3', pre:'One dozen equals', post:'items.', ans:'TWELVE' },
-  { id:'b4', pre:'A triangle has', post:'sides.', ans:'THREE' },
-  { id:'b5', pre:'I have', post:'eyes.', ans:'TWO' }
+/* ============================================================
+   EXERCISE 3: DRAG FILL BLANKS
+   ============================================================ */
+const EX3_BANK_WORDS=['FIVE','SEVEN','TWELVE','THREE','TWO','TEN','FOUR','EIGHT'];
+const EX3_SENTS=[
+  {id:'b1',pre:'I have',post:'fingers on one hand.',ans:'FIVE'},
+  {id:'b2',pre:'A week has',post:'days.',ans:'SEVEN'},
+  {id:'b3',pre:'One dozen equals',post:'items.',ans:'TWELVE'},
+  {id:'b4',pre:'A triangle has',post:'sides.',ans:'THREE'},
+  {id:'b5',pre:'I have',post:'eyes.',ans:'TWO'}
 ];
 
-function initEx3() {
-  const bank = document.getElementById('wb3'), sentsDiv = document.getElementById('ex3-sents');
-  bank.innerHTML = ''; sentsDiv.innerHTML = '';
-  const usedWords = Object.values(state.ex3);
-  EX3_BANK_WORDS.filter(w => !usedWords.includes(w)).forEach(w => bank.appendChild(makeChip(w, '3', 'chip-'+w, 'wb3')));
-
-  EX3_SENTS.forEach(sent => {
-    const p = document.createElement('div'); p.className = 'fill-sent';
-    const blank = document.createElement('span'); blank.className = 'drop-blank'; blank.dataset.droptarget = sent.id; blank.dataset.blankId = sent.id;
-    if (state.ex3[sent.id]) { blank.textContent = state.ex3[sent.id]; blank.classList.add('filled'); } else { blank.textContent = '___'; }
-    blank.addEventListener('click', () => {
-      if (!blank.classList.contains('filled')) return;
-      const word = state.ex3[sent.id]; delete state.ex3[sent.id];
-      blank.textContent = '___'; blank.classList.remove('filled');
-      document.getElementById('wb3').appendChild(makeChip(word, '3', 'chip-'+word, 'wb3')); saveState();
+function initEx3(){
+  const bank=document.getElementById('wb3');
+  bank.innerHTML='';
+  document.getElementById('ex3-sents').innerHTML='';
+  const usedWords=Object.values(state.ex3);
+  const bankWords=EX3_BANK_WORDS.filter(w=>!usedWords.includes(w));
+  bankWords.forEach(w=>bank.appendChild(makeChip(w,'3','chip-'+w,'wb3')));
+  EX3_SENTS.forEach(sent=>{
+    const p=document.createElement('p');p.className='fill-sent';
+    const blank=document.createElement('span');
+    blank.className='drop-blank';blank.dataset.droptarget=sent.id;blank.dataset.blankId=sent.id;
+    const filled=state.ex3[sent.id];
+    if(filled){blank.textContent=filled;blank.classList.add('filled');}
+    else{blank.textContent='___';}
+    blank.addEventListener('click',()=>{
+      if(!blank.classList.contains('filled'))return;
+      const word=state.ex3[sent.id];if(!word)return;
+      delete state.ex3[sent.id];blank.textContent='___';blank.classList.remove('filled');
+      document.getElementById('wb3').appendChild(makeChip(word,'3','chip-'+word,'wb3'));
+      saveState();updateProgress();
     });
-    p.appendChild(document.createTextNode(sent.pre + ' ')); p.appendChild(blank); p.appendChild(document.createTextNode(' ' + sent.post));
-    sentsDiv.appendChild(p);
+    p.appendChild(document.createTextNode(sent.pre+' '));
+    p.appendChild(blank);
+    p.appendChild(document.createTextNode(' '+sent.post));
+    document.getElementById('ex3-sents').appendChild(p);
   });
 }
-function makeChip(word, group, id, bankId) {
-  const chip = document.createElement('div'); chip.className = 'd-chip'; chip.textContent = word; chip.dataset.word = word; chip.dataset.bankId = bankId;
-  makeDraggable(chip, group, id); return chip;
+
+function makeChip(word,group,id,bankId){
+  const chip=document.createElement('div');
+  chip.className='d-chip';chip.textContent=word;
+  chip.dataset.word=word;chip.dataset.bankId=bankId;
+  makeDraggable(chip,group,id);
+  return chip;
 }
-function dropEx3(srcEl, target, id) {
-  const word = srcEl.dataset.word;
-  if (target.dataset.bank === '3') {
-    const oldBlank = Object.keys(state.ex3).find(k => state.ex3[k] === word);
-    if (oldBlank) { delete state.ex3[oldBlank]; const bEl = document.querySelector(`[data-blank-id="${oldBlank}"]`); if (bEl) { bEl.textContent = '___'; bEl.classList.remove('filled'); } }
-    if (!document.querySelector(`#wb3 [data-word="${word}"]`)) document.getElementById('wb3').appendChild(makeChip(word, '3', 'chip-'+word, 'wb3'));
-    srcEl.remove(); saveState(); return;
+
+function dropEx3(srcEl,target,id){
+  const word=srcEl.dataset.word;
+  if(target.dataset.bank==='3'){
+    const oldBlank=Object.keys(state.ex3).find(k=>state.ex3[k]===word);
+    if(oldBlank){
+      delete state.ex3[oldBlank];
+      const blankEl=document.querySelector(`[data-blank-id="${oldBlank}"]`);
+      if(blankEl){blankEl.textContent='___';blankEl.classList.remove('filled');}
+    }
+    if(!document.getElementById('wb3').querySelector(`[data-word="${word}"]`))
+      document.getElementById('wb3').appendChild(makeChip(word,'3','chip-'+word,'wb3'));
+    srcEl.remove();saveState();return;
   }
-  const blankId = target.dataset.droptarget; if (!blankId) return;
-  if (state.ex3[blankId]) document.getElementById('wb3').appendChild(makeChip(state.ex3[blankId], '3', 'chip-'+state.ex3[blankId], 'wb3'));
-  
-  const oldBlank = Object.keys(state.ex3).find(k => state.ex3[k] === word);
-  if (oldBlank && oldBlank !== blankId) { delete state.ex3[oldBlank]; const bEl = document.querySelector(`[data-blank-id="${oldBlank}"]`); if (bEl) { bEl.textContent = '___'; bEl.classList.remove('filled'); } }
-
-  state.ex3[blankId] = word; target.textContent = word; target.classList.add('filled');
-  srcEl.remove(); saveState();
+  const blankId=target.dataset.droptarget;if(!blankId)return;
+  if(state.ex3[blankId]){
+    const oldWord=state.ex3[blankId];
+    document.getElementById('wb3').appendChild(makeChip(oldWord,'3','chip-'+oldWord,'wb3'));
+  }
+  const oldBlank=Object.keys(state.ex3).find(k=>state.ex3[k]===word);
+  if(oldBlank&&oldBlank!==blankId){
+    delete state.ex3[oldBlank];
+    const blankEl=document.querySelector(`[data-blank-id="${oldBlank}"]`);
+    if(blankEl){blankEl.textContent='___';blankEl.classList.remove('filled');}
+  }
+  state.ex3[blankId]=word;target.textContent=word;target.classList.add('filled');
+  srcEl.remove();saveState();updateProgress();
 }
 
-/* --- EJ 4: UNSCRAMBLE --- */
-const EX4_WORDS = [
-  { clue: 'Número: 8', answer: 'EIGHT', scrambled: ['G','H','I','T','E'] },
-  { clue: 'Número: 11', answer: 'ELEVEN', scrambled: ['V','E','L','E','N','E'] },
-  { clue: 'Número: 12', answer: 'TWELVE', scrambled: ['L','E','W','V','T','E'] },
-  { clue: 'Número: 15', answer: 'FIFTEEN', scrambled: ['N','E','T','F','I','E','F'] },
-  { clue: 'Número: 20', answer: 'TWENTY', scrambled: ['N','T','W','E','T','Y'] }
+/* ============================================================
+   EXERCISE 4: SCRAMBLE LETTERS
+   ============================================================ */
+const EX4_WORDS=[
+  {clue:'Número: 8',answer:'EIGHT',scrambled:['G','H','I','T','E']},
+  {clue:'Número: 11',answer:'ELEVEN',scrambled:['V','E','L','E','N','E']},
+  {clue:'Número: 12',answer:'TWELVE',scrambled:['L','E','W','V','T','E']},
+  {clue:'Número: 15',answer:'FIFTEEN',scrambled:['N','E','T','F','I','E','F']},
+  {clue:'Número: 20',answer:'TWENTY',scrambled:['N','T','W','E','T','Y']}
 ];
-function initEx4() {
-  if (!state.ex4 || typeof state.ex4 !== 'object') state.ex4 = {};
-  const container = document.getElementById('scr-items'); container.innerHTML = '';
-  EX4_WORDS.forEach((item, idx) => {
-    const div = document.createElement('div'); div.className = 'scr-item';
-    div.innerHTML = `<div class="scr-hint"><span>${item.clue}</span> — Ordena las letras:</div><div class="tile-pool" id="pool-${idx}"></div><div class="tile-ans" id="ans-${idx}"></div><div class="scr-actions"><button class="btn-check" onclick="checkScramble(${idx})">✓ Verificar</button><button class="btn-clear" onclick="clearScramble(${idx})">✕ Limpiar</button><span class="scr-result" id="scr-res-${idx}"></span></div>`;
-    container.appendChild(div);
 
-    const currentAns = state.ex4[idx] || [], usedIndices = currentAns.map(obj => obj.srcIdx);
-    item.scrambled.forEach((letter, si) => {
-      const tile = document.createElement('div'); tile.className = 'l-tile' + (usedIndices.includes(si) ? ' used' : ''); tile.textContent = letter; tile.dataset.si = si;
-      tile.addEventListener('click', () => addLetter(idx, si, letter, tile)); document.getElementById('pool-' + idx).appendChild(tile);
+function initEx4(){
+  if(!state.ex4||typeof state.ex4!=='object')state.ex4={};
+  const container=document.getElementById('scr-items');container.innerHTML='';
+  EX4_WORDS.forEach((item,idx)=>{
+    const div=document.createElement('div');div.className='scr-item';
+    div.innerHTML=`<div class="scr-hint"><span>${item.clue}</span> — Ordena las letras:</div>
+      <div class="tile-pool" id="pool-${idx}"></div>
+      <div class="tile-ans" id="ans-${idx}"></div>
+      <div class="scr-actions">
+        <button class="btn-check" onclick="checkScramble(${idx})">✓ Verificar</button>
+        <button class="btn-clear" onclick="clearScramble(${idx})">✕ Limpiar</button>
+        <span class="scr-result" id="scr-res-${idx}"></span>
+      </div>`;
+    container.appendChild(div);
+    const currentAns=state.ex4[idx]||[];
+    const usedIndices=currentAns.map(o=>o.srcIdx);
+    item.scrambled.forEach((letter,si)=>{
+      const tile=document.createElement('div');
+      tile.className='l-tile'+(usedIndices.includes(si)?' used':'');
+      tile.textContent=letter;tile.dataset.si=si;
+      tile.addEventListener('click',()=>addLetter(idx,si,letter,tile));
+      document.getElementById('pool-'+idx).appendChild(tile);
     });
-    currentAns.forEach(obj => {
-      const ansTile = document.createElement('div'); ansTile.className = 'l-tile'; ansTile.textContent = obj.letter; ansTile.dataset.si = obj.srcIdx;
-      ansTile.addEventListener('click', () => removeLetter(idx, obj.srcIdx, ansTile)); document.getElementById('ans-' + idx).appendChild(ansTile);
+    currentAns.forEach(obj=>{
+      const ansTile=document.createElement('div');
+      ansTile.className='l-tile';ansTile.textContent=obj.letter;ansTile.dataset.si=obj.srcIdx;
+      ansTile.addEventListener('click',()=>removeLetter(idx,obj.srcIdx,ansTile));
+      document.getElementById('ans-'+idx).appendChild(ansTile);
     });
-    if (state.ex4[idx] && state.ex4[idx].length === item.answer.length) checkScramble(idx, true);
+    if(state.ex4[idx]&&state.ex4[idx].length===item.answer.length)checkScramble(idx,true);
   });
 }
-function addLetter(idx, si, letter, tile) {
-  if (!state.ex4[idx]) state.ex4[idx] = [];
-  state.ex4[idx].push({ letter, srcIdx: si }); tile.classList.add('used');
-  const ansTile = document.createElement('div'); ansTile.className = 'l-tile'; ansTile.textContent = letter; ansTile.dataset.si = si;
-  ansTile.addEventListener('click', () => removeLetter(idx, si, ansTile)); document.getElementById('ans-' + idx).appendChild(ansTile);
-  document.getElementById('scr-res-' + idx).textContent = ''; saveState();
+
+function addLetter(idx,si,letter,tile){
+  if(!state.ex4[idx])state.ex4[idx]=[];
+  state.ex4[idx].push({letter,srcIdx:si});
+  tile.classList.add('used');
+  const ansTile=document.createElement('div');
+  ansTile.className='l-tile';ansTile.textContent=letter;ansTile.dataset.si=si;
+  ansTile.addEventListener('click',()=>removeLetter(idx,si,ansTile));
+  document.getElementById('ans-'+idx).appendChild(ansTile);
+  document.getElementById('scr-res-'+idx).textContent='';
+  saveState();
 }
-function removeLetter(idx, si, ansTile) {
-  state.ex4[idx] = (state.ex4[idx] || []).filter(o => o.srcIdx !== si); ansTile.remove();
-  const poolTile = document.querySelector(`#pool-${idx} .l-tile[data-si="${si}"]`); if (poolTile) poolTile.classList.remove('used');
-  document.getElementById('scr-res-' + idx).textContent = ''; saveState();
+function removeLetter(idx,si,ansTile){
+  state.ex4[idx]=(state.ex4[idx]||[]).filter(o=>o.srcIdx!==si);
+  ansTile.remove();
+  const poolTile=document.querySelector(`#pool-${idx} .l-tile[data-si="${si}"]`);
+  if(poolTile)poolTile.classList.remove('used');
+  document.getElementById('scr-res-'+idx).textContent='';saveState();
 }
-function clearScramble(idx) {
-  state.ex4[idx] = []; document.getElementById('ans-' + idx).innerHTML = '';
-  document.querySelectorAll(`#pool-${idx} .l-tile`).forEach(t => t.classList.remove('used'));
-  document.getElementById('scr-res-' + idx).textContent = ''; saveState();
+function clearScramble(idx){
+  state.ex4[idx]=[];
+  document.getElementById('ans-'+idx).innerHTML='';
+  document.querySelectorAll(`#pool-${idx} .l-tile`).forEach(t=>t.classList.remove('used'));
+  document.getElementById('scr-res-'+idx).textContent='';saveState();
 }
-function checkScramble(idx, silent) {
-  const ans = (state.ex4[idx] || []).map(o => o.letter).join(''), correct = EX4_WORDS[idx].answer, res = document.getElementById('scr-res-' + idx);
-  if (ans === correct) { res.textContent = '✓ ¡Correcto!'; res.className = 'scr-result ok'; } 
-  else if (ans.length === correct.length) { if (!silent) { res.textContent = '✗ Incorrecto'; res.className = 'scr-result nok'; } } 
-  else if (!silent) { res.textContent = 'Completa las letras'; res.className = 'scr-result'; res.style.color = 'var(--muted)'; }
+function checkScramble(idx,silent){
+  const ans=(state.ex4[idx]||[]).map(o=>o.letter).join('');
+  const correct=EX4_WORDS[idx].answer;
+  const res=document.getElementById('scr-res-'+idx);
+  if(ans===correct){res.textContent='✓ ¡Correcto!';res.className='scr-result ok';}
+  else if(ans.length===correct.length){
+    if(!silent){res.textContent='✗ Incorrecto, intenta de nuevo';res.className='scr-result nok';}
+  } else if(!silent){
+    res.textContent='Completa todas las letras primero';
+    res.className='scr-result';res.style.color='var(--muted)';
+  }
   updateProgress();
 }
 
-/* --- EJ 5, 6, 7, 8, 9, 10... --- */
-const EX5_QS = [ { emojis:'🍎', count:13, choices:['eleven','twelve','thirteen','fourteen'], ans:'thirteen' }, { emojis:'🌟', count:17, choices:['fifteen','sixteen','seventeen','eighteen'], ans:'seventeen' }, { emojis:'🐱', count:11, choices:['nine','ten','eleven','twelve'], ans:'eleven' }, { emojis:'🎈', count:20, choices:['eighteen','nineteen','twenty','none'], ans:'twenty' }, { emojis:'🦋', count:16, choices:['fourteen','fifteen','sixteen','seventeen'], ans:'sixteen' } ];
-function initEx5() {
-  const list = document.getElementById('cq-list'); list.innerHTML = '';
-  EX5_QS.forEach((q, i) => {
-    const div = document.createElement('div'); div.className = 'cq-item';
-    div.innerHTML = `<div class="cq-emojis">${q.emojis.repeat(q.count)}</div><div class="cq-label">How many? — ¿Cuántos hay?</div><div class="cq-choices" id="cq-choices-${i}"></div>`;
-    list.appendChild(div); const choicesDiv = div.querySelector('.cq-choices');
-    q.choices.forEach(choice => {
-      const btn = document.createElement('button'); btn.className = 'cho-btn'; btn.textContent = choice;
-      if (state.ex5[i] === choice) { btn.classList.add(choice === q.ans ? 'correct' : 'wrong'); if (choice !== q.ans) btn.classList.add('sel'); }
-      btn.addEventListener('click', () => {
-        choicesDiv.querySelectorAll('.cho-btn').forEach(b => b.classList.remove('sel','correct','wrong'));
-        btn.classList.add('sel'); state.ex5[i] = choice;
-        choicesDiv.querySelectorAll('.cho-btn').forEach(b => { if (b.textContent === q.ans) b.classList.add('correct'); else if (b.classList.contains('sel')) b.classList.add('wrong'); });
+/* ============================================================
+   EXERCISE 5: EMOJI COUNT
+   ============================================================ */
+const EX5_QS=[
+  {emojis:'🍎',count:13,choices:['eleven','twelve','thirteen','fourteen'],ans:'thirteen'},
+  {emojis:'🌟',count:17,choices:['fifteen','sixteen','seventeen','eighteen'],ans:'seventeen'},
+  {emojis:'🐱',count:11,choices:['nine','ten','eleven','twelve'],ans:'eleven'},
+  {emojis:'🎈',count:20,choices:['eighteen','nineteen','twenty','none'],ans:'twenty'},
+  {emojis:'🦋',count:16,choices:['fourteen','fifteen','sixteen','seventeen'],ans:'sixteen'}
+];
+
+function initEx5(){
+  const list=document.getElementById('cq-list');list.innerHTML='';
+  EX5_QS.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='cq-item';
+    const emojiStr=q.emojis.repeat(q.count);
+    div.innerHTML=`<div class="cq-emojis">${emojiStr}</div>
+      <div class="cq-label">How many? — ¿Cuántos hay?</div>
+      <div class="cq-choices" id="cq-choices-${i}"></div>`;
+    list.appendChild(div);
+    const choicesDiv=div.querySelector('.cq-choices');
+    q.choices.forEach(choice=>{
+      const btn=document.createElement('button');btn.className='cho-btn';btn.textContent=choice;
+      if(state.ex5[i]===choice){
+        btn.classList.add(choice===q.ans?'correct':'wrong');
+        if(choice!==q.ans)btn.classList.add('sel');
+      }
+      btn.addEventListener('click',()=>{
+        choicesDiv.querySelectorAll('.cho-btn').forEach(b=>b.classList.remove('sel','correct','wrong'));
+        btn.classList.add('sel');state.ex5[i]=choice;
+        choicesDiv.querySelectorAll('.cho-btn').forEach(b=>{
+          if(b.textContent===q.ans)b.classList.add('correct');
+          else if(b.classList.contains('sel'))b.classList.add('wrong');
+        });
         saveState();
       });
       choicesDiv.appendChild(btn);
@@ -961,158 +1063,400 @@ function initEx5() {
   });
 }
 
-const EX6_QS = [ { stmt: '"EIGHT" comes before "NINE" in counting.', ans: 'true' }, { stmt: '"TWELVE" is an odd number.', ans: 'false' }, { stmt: '"TWENTY" is the largest number from 0 to 20.', ans: 'true' }, { stmt: '"ELEVEN" comes after "TWELVE" when counting.', ans: 'false' }, { stmt: '"FIFTEEN" has exactly six (6) letters.', ans: 'false' } ];
-function initEx6() {
-  const list = document.getElementById('tf-list'); list.innerHTML = '';
-  EX6_QS.forEach((q, i) => {
-    const div = document.createElement('div'); div.className = 'tf-item';
-    div.innerHTML = `<div class="tf-stmt">${i+1}. ${q.stmt}</div><div class="tf-btns"><button class="tf-btn tf-t ${state.ex6[i]==='true'?'sel':''}" onclick="selectTF(${i},'true',this)">✓ True</button><button class="tf-btn tf-f ${state.ex6[i]==='false'?'sel':''}" onclick="selectTF(${i},'false',this)">✗ False</button></div>`;
+/* ============================================================
+   EXERCISE 6: TRUE/FALSE
+   ============================================================ */
+const EX6_QS=[
+  {stmt:'"EIGHT" comes before "NINE" in counting.',ans:'true'},
+  {stmt:'"TWELVE" is an odd number.',ans:'false'},
+  {stmt:'"TWENTY" is the largest number from 0 to 20.',ans:'true'},
+  {stmt:'"ELEVEN" comes after "TWELVE" when counting.',ans:'false'},
+  {stmt:'"FIFTEEN" has exactly six (6) letters.',ans:'false'}
+];
+
+function initEx6(){
+  const list=document.getElementById('tf-list');list.innerHTML='';
+  EX6_QS.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='tf-item';
+    div.innerHTML=`<div class="tf-stmt">${i+1}. ${q.stmt}</div>
+      <div class="tf-btns">
+        <button class="tf-btn tf-t ${state.ex6[i]==='true'?'sel':''}" onclick="selectTF(${i},'true',this)">✓ True</button>
+        <button class="tf-btn tf-f ${state.ex6[i]==='false'?'sel':''}" onclick="selectTF(${i},'false',this)">✗ False</button>
+      </div>`;
     list.appendChild(div);
   });
 }
-function selectTF(i, val, btn) { const item = btn.closest('.tf-item'); item.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); state.ex6[i] = val; saveState(); }
+function selectTF(i,val,btn){
+  btn.closest('.tf-item').querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');state.ex6[i]=val;saveState();updateProgress();
+}
 
-const EX7_QS = [ { pre:'A soccer team has', post:'players on the field.', opts:['ten','eleven','twelve'], ans:'eleven' }, { pre:'One dozen means', post:'items.', opts:['eleven','twelve','thirteen'], ans:'twelve' }, { pre:'I have', post:'toes on my feet.', opts:['eight','nine','ten'], ans:'ten' }, { pre:"Valentine's Day is on February", post:'.', opts:['thirteen','fourteen','fifteen'], ans:'fourteen' }, { pre:'The number before twenty is', post:'.', opts:['seventeen','eighteen','nineteen'], ans:'nineteen' } ];
-function initEx7() {
-  const list = document.getElementById('dd-list'); list.innerHTML = '';
-  EX7_QS.forEach((q, i) => {
-    const p = document.createElement('div'); p.className = 'dd-sent'; const sel = document.createElement('select'); sel.className = 'dd-select';
-    sel.innerHTML = `<option value="">— choose —</option>` + q.opts.map(o => `<option value="${o}" ${state.ex7[i]===o?'selected':''}>${o}</option>`).join('');
-    sel.addEventListener('change', () => { state.ex7[i] = sel.value; saveState(); });
-    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `)); p.appendChild(sel); p.appendChild(document.createTextNode(` ${q.post}`)); list.appendChild(p);
+/* ============================================================
+   EXERCISE 7: DROPDOWN
+   ============================================================ */
+const EX7_QS=[
+  {pre:'A soccer team has',post:'players on the field.',opts:['ten','eleven','twelve'],ans:'eleven'},
+  {pre:'One dozen means',post:'items.',opts:['eleven','twelve','thirteen'],ans:'twelve'},
+  {pre:'I have',post:'toes on my feet.',opts:['eight','nine','ten'],ans:'ten'},
+  {pre:"Valentine's Day is on February",post:'.',opts:['thirteen','fourteen','fifteen'],ans:'fourteen'},
+  {pre:'The number before twenty is',post:'.',opts:['seventeen','eighteen','nineteen'],ans:'nineteen'}
+];
+
+function initEx7(){
+  const list=document.getElementById('dd-list');list.innerHTML='';
+  EX7_QS.forEach((q,i)=>{
+    const p=document.createElement('p');p.className='dd-sent';
+    const sel=document.createElement('select');sel.className='dd-select';
+    sel.innerHTML=`<option value="">— choose —</option>`+
+      q.opts.map(o=>`<option value="${o}"${state.ex7[i]===o?' selected':''}>${o}</option>`).join('');
+    sel.addEventListener('change',()=>{state.ex7[i]=sel.value;saveState();updateProgress();});
+    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `));
+    p.appendChild(sel);
+    p.appendChild(document.createTextNode(` ${q.post}`));
+    list.appendChild(p);
   });
 }
 
-const EX8_NUMBERS = [4, 7, 10, 13, 16, 19, 2, 15], EX8_EVEN = [4, 10, 16, 2], EX8_ODD  = [7, 13, 19, 15];
-function initEx8() {
-  if (!state.ex8 || !state.ex8.bank) state.ex8 = { bank: [...EX8_NUMBERS], even: [], odd: [] };
-  const bank = document.getElementById('eo-bank'), evenDrop = document.getElementById('eo-even'), oddDrop = document.getElementById('eo-odd');
-  bank.innerHTML = ''; evenDrop.innerHTML = ''; oddDrop.innerHTML = '';
-  function makeNumChip(n) { const chip = document.createElement('div'); chip.className = 'n-chip'; chip.textContent = n; chip.dataset.num = n; makeDraggable(chip, '8', 'num-' + n); return chip; }
-  state.ex8.bank.forEach(n => bank.appendChild(makeNumChip(n))); state.ex8.even.forEach(n => evenDrop.appendChild(makeNumChip(n))); state.ex8.odd.forEach(n => oddDrop.appendChild(makeNumChip(n)));
-}
-function dropEx8(srcEl, target, id) {
-  const num = parseInt(srcEl.dataset.num), targetId = target.dataset.target;
-  ['bank','even','odd'].forEach(k => { state.ex8[k] = (state.ex8[k] || []).filter(n => n !== num); });
-  if (targetId === 'even') state.ex8.even.push(num); else if (targetId === 'odd') state.ex8.odd.push(num); else state.ex8.bank.push(num);
-  srcEl.remove();
-  const container = targetId === 'even' ? document.getElementById('eo-even') : targetId === 'odd' ? document.getElementById('eo-odd') : document.getElementById('eo-bank');
-  const newChip = document.createElement('div'); newChip.className = 'n-chip'; newChip.textContent = num; newChip.dataset.num = num; makeDraggable(newChip, '8', 'num-' + num);
-  container.appendChild(newChip); saveState();
+/* ============================================================
+   EXERCISE 8: EVEN / ODD — FIXED
+   ============================================================ */
+const EX8_NUMBERS=[4,7,10,13,16,19,2,15];
+const EX8_EVEN=[4,10,16,2];
+const EX8_ODD=[7,13,19,15];
+
+function initEx8(){
+  if(!state.ex8||!Array.isArray(state.ex8.bank))
+    state.ex8={bank:[...EX8_NUMBERS],even:[],odd:[]};
+  const bank=document.getElementById('eo-bank');
+  const evenDrop=document.getElementById('eo-even');
+  const oddDrop=document.getElementById('eo-odd');
+  bank.innerHTML='';evenDrop.innerHTML='';oddDrop.innerHTML='';
+
+  function makeNumChip(n){
+    const chip=document.createElement('div');
+    chip.className='n-chip';chip.textContent=n;
+    chip.dataset.word=String(n);chip.dataset.num=String(n);
+    makeDraggable(chip,'8','num-'+n);
+    return chip;
+  }
+
+  state.ex8.bank.forEach(n=>bank.appendChild(makeNumChip(n)));
+  state.ex8.even.forEach(n=>evenDrop.appendChild(makeNumChip(n)));
+  state.ex8.odd.forEach(n=>oddDrop.appendChild(makeNumChip(n)));
 }
 
-const EX9_TARGETS = [ { id:'t1', emoji:'🎂', count:11, ans:'ELEVEN' }, { id:'t2', emoji:'⭐', count:14, ans:'FOURTEEN' }, { id:'t3', emoji:'🍕', count:17, ans:'SEVENTEEN' }, { id:'t4', emoji:'🎮', count:18, ans:'EIGHTEEN' }, { id:'t5', emoji:'🌺', count:20, ans:'TWENTY' } ];
-function initEx9() {
-  const bank = document.getElementById('em-bank'), targets = document.getElementById('em-targets'); bank.innerHTML = ''; targets.innerHTML = '';
-  const usedWords = Object.values(state.ex9);
-  EX9_TARGETS.map(t => t.ans).filter(w => !usedWords.includes(w)).forEach(w => { bank.appendChild(makeChip(w, '9', 'emchip-' + w, 'em-bank')); });
-  EX9_TARGETS.forEach(t => {
-    const div = document.createElement('div'); div.className = 'em-target' + (state.ex9[t.id] ? ' filled' : ''); div.dataset.droptarget = t.id; div.dataset.targetId = t.id;
-    div.innerHTML = `<div class="em-emojis">${t.emoji.repeat(t.count)}</div><div class="em-cnt">(${t.count})</div><div class="em-slot" id="em-slot-${t.id}"></div>`;
-    if (state.ex9[t.id]) { const chip = makeChip(state.ex9[t.id], '9', 'emchip-' + state.ex9[t.id], 'em-bank'); chip.style.margin = '0'; div.querySelector('.em-slot').appendChild(chip); }
-    div.addEventListener('click', (e) => {
-      if (!div.classList.contains('filled')) return;
-      const w = state.ex9[t.id]; if (!w) return; delete state.ex9[t.id]; div.querySelector('.em-slot').innerHTML = ''; div.classList.remove('filled');
-      document.getElementById('em-bank').appendChild(makeChip(w, '9', 'emchip-' + w, 'em-bank')); saveState();
+function dropEx8(srcEl,target,id){
+  const num=parseInt(srcEl.dataset.num);
+  // Determine target zone
+  let zone=null;
+  if(target.dataset.target==='even'||target.id==='eo-col-even')zone='even';
+  else if(target.dataset.target==='odd'||target.id==='eo-col-odd')zone='odd';
+  else if(target.dataset.bank==='8'||target.id==='eo-bank')zone='bank';
+  else{
+    // Try parent
+    const p=target.closest('[data-target]');
+    if(p)zone=p.dataset.target;
+    else zone='bank';
+  }
+
+  // Remove from state
+  state.ex8.bank=state.ex8.bank.filter(n=>n!==num);
+  state.ex8.even=state.ex8.even.filter(n=>n!==num);
+  state.ex8.odd=state.ex8.odd.filter(n=>n!==num);
+
+  if(zone==='even')state.ex8.even.push(num);
+  else if(zone==='odd')state.ex8.odd.push(num);
+  else state.ex8.bank.push(num);
+
+  srcEl.remove();
+
+  const container=zone==='even'?document.getElementById('eo-even'):
+                  zone==='odd'?document.getElementById('eo-odd'):
+                  document.getElementById('eo-bank');
+  const newChip=document.createElement('div');
+  newChip.className='n-chip';newChip.textContent=num;
+  newChip.dataset.word=String(num);newChip.dataset.num=String(num);
+  makeDraggable(newChip,'8','num-'+num);
+  container.appendChild(newChip);
+  saveState();updateProgress();
+}
+
+/* ============================================================
+   EXERCISE 9: EMOJI-WORD MATCH — FIXED
+   ============================================================ */
+const EX9_TARGETS=[
+  {id:'t1',emoji:'🎂',count:11,ans:'ELEVEN'},
+  {id:'t2',emoji:'⭐',count:14,ans:'FOURTEEN'},
+  {id:'t3',emoji:'🍕',count:17,ans:'SEVENTEEN'},
+  {id:'t4',emoji:'🎮',count:18,ans:'EIGHTEEN'},
+  {id:'t5',emoji:'🌺',count:20,ans:'TWENTY'}
+];
+
+function initEx9(){
+  const bank=document.getElementById('em-bank');
+  const targets=document.getElementById('em-targets');
+  bank.innerHTML='';targets.innerHTML='';
+
+  const usedWords=Object.values(state.ex9);
+  const bankWords=EX9_TARGETS.map(t=>t.ans).filter(w=>!usedWords.includes(w));
+
+  bankWords.forEach(w=>{
+    bank.appendChild(makeChip(w,'9','emchip-'+w,'em-bank'));
+  });
+
+  EX9_TARGETS.forEach(t=>{
+    const div=document.createElement('div');
+    div.className='em-target'+(state.ex9[t.id]?' filled':'');
+    div.dataset.droptarget=t.id;div.dataset.targetId=t.id;
+
+    // Use a compact representation: count instead of repeating emoji
+    div.innerHTML=`
+      <div style="font-size:1.8rem;line-height:1">${t.emoji}</div>
+      <div class="em-cnt">×${t.count} emojis</div>
+      <div class="em-emojis" style="font-size:.75rem;line-height:1.6;word-break:break-all">${t.emoji.repeat(Math.min(t.count,10))}${t.count>10?'…':''}</div>
+      <div class="em-slot" id="em-slot-${t.id}"></div>
+    `;
+
+    if(state.ex9[t.id]){
+      const w=state.ex9[t.id];
+      const chip=makeChip(w,'9','emchip-'+w,'em-bank');
+      chip.style.margin='0';
+      div.querySelector('.em-slot').appendChild(chip);
+    }
+
+    div.addEventListener('click',()=>{
+      if(!div.classList.contains('filled'))return;
+      const w=state.ex9[t.id];if(!w)return;
+      delete state.ex9[t.id];
+      div.querySelector('.em-slot').innerHTML='';
+      div.classList.remove('filled');
+      bank.appendChild(makeChip(w,'9','emchip-'+w,'em-bank'));
+      saveState();updateProgress();
     });
     targets.appendChild(div);
   });
 }
-function dropEx9(srcEl, target, id) {
-  const word = srcEl.dataset.word;
-  if (target.dataset.bank === '9') {
-    const oldTarget = Object.keys(state.ex9).find(k => state.ex9[k] === word);
-    if (oldTarget) { delete state.ex9[oldTarget]; document.getElementById('em-slot-' + oldTarget).innerHTML = ''; document.querySelector(`[data-target-id="${oldTarget}"]`).classList.remove('filled'); }
-    document.getElementById('em-bank').appendChild(makeChip(word, '9', 'emchip-' + word, 'em-bank')); srcEl.remove(); saveState(); return;
+
+function dropEx9(srcEl,target,id){
+  const word=srcEl.dataset.word;
+
+  if(target.dataset.bank==='9'||target.id==='em-bank'){
+    const oldTarget=Object.keys(state.ex9).find(k=>state.ex9[k]===word);
+    if(oldTarget){
+      delete state.ex9[oldTarget];
+      const slot=document.getElementById('em-slot-'+oldTarget);
+      if(slot)slot.innerHTML='';
+      const tDiv=document.querySelector(`[data-target-id="${oldTarget}"]`);
+      if(tDiv)tDiv.classList.remove('filled');
+    }
+    document.getElementById('em-bank').appendChild(makeChip(word,'9','emchip-'+word,'em-bank'));
+    srcEl.remove();saveState();return;
   }
-  const tid = target.dataset.droptarget || target.dataset.targetId; if (!tid) return;
-  if (state.ex9[tid]) document.getElementById('em-bank').appendChild(makeChip(state.ex9[tid], '9', 'emchip-' + state.ex9[tid], 'em-bank'));
-  const oldTid = Object.keys(state.ex9).find(k => state.ex9[k] === word);
-  if (oldTid && oldTid !== tid) { delete state.ex9[oldTid]; document.getElementById('em-slot-' + oldTid).innerHTML = ''; document.querySelector(`[data-target-id="${oldTid}"]`).classList.remove('filled'); }
-  state.ex9[tid] = word; const slot = document.getElementById('em-slot-' + tid);
-  if (slot) { slot.innerHTML = ''; const chip = makeChip(word, '9', 'emchip-' + word, 'em-bank'); chip.style.margin = '0'; slot.appendChild(chip); }
-  (target.closest('.em-target') || target).classList.add('filled'); srcEl.remove(); saveState();
+
+  const emTarget=target.closest('.em-target');
+  const tid=(emTarget&&emTarget.dataset.targetId)||target.dataset.droptarget||target.dataset.targetId;
+  if(!tid)return;
+
+  if(state.ex9[tid]){
+    const oldWord=state.ex9[tid];
+    document.getElementById('em-bank').appendChild(makeChip(oldWord,'9','emchip-'+oldWord,'em-bank'));
+  }
+  const oldTid=Object.keys(state.ex9).find(k=>state.ex9[k]===word);
+  if(oldTid&&oldTid!==tid){
+    delete state.ex9[oldTid];
+    const slot=document.getElementById('em-slot-'+oldTid);if(slot)slot.innerHTML='';
+    const tDiv=document.querySelector(`[data-target-id="${oldTid}"]`);
+    if(tDiv)tDiv.classList.remove('filled');
+  }
+  state.ex9[tid]=word;
+  const slot=document.getElementById('em-slot-'+tid);
+  if(slot){
+    slot.innerHTML='';
+    const chip=makeChip(word,'9','emchip-'+word,'em-bank');
+    chip.style.margin='0';slot.appendChild(chip);
+  }
+  const tDiv=document.querySelector(`[data-target-id="${tid}"]`);
+  if(tDiv)tDiv.classList.add('filled');
+  srcEl.remove();saveState();updateProgress();
 }
 
-const EX10_QS = [ { pre:'The number after nineteen is', post:'.', ans:'twenty' }, { pre:'Five plus three equals', post:'.', ans:'eight' }, { pre:'Ten plus six equals', post:'.', ans:'sixteen' }, { pre:'Two times seven is', post:'.', ans:'fourteen' }, { pre:'Three times four is', post:'.', ans:'twelve' } ];
-function initEx10() {
-  const list = document.getElementById('fib-list'); list.innerHTML = '';
-  EX10_QS.forEach((q, i) => {
-    const p = document.createElement('div'); p.className = 'fib-sent'; const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'fib-input'; inp.placeholder = 'write here…'; inp.value = state.ex10[i] || ''; inp.dataset.idx = i;
-    const checkInput = () => {
-      const val = inp.value.trim().toLowerCase().replace(/\s+/g,' '); state.ex10[i] = inp.value;
-      if (val === q.ans) { inp.classList.remove('nok-in'); inp.classList.add('ok-in'); } else if (val.length > 0) { inp.classList.remove('ok-in'); inp.classList.add('nok-in'); } else { inp.classList.remove('ok-in','nok-in'); }
-      saveState();
+/* ============================================================
+   EXERCISE 10: FILL IN THE BLANK (TYPE)
+   ============================================================ */
+const EX10_QS=[
+  {pre:'The number after nineteen is',post:'.',ans:'twenty'},
+  {pre:'Five plus three equals',post:'.',ans:'eight'},
+  {pre:'Ten plus six equals',post:'.',ans:'sixteen'},
+  {pre:'Two times seven is',post:'.',ans:'fourteen'},
+  {pre:'Three times four is',post:'.',ans:'twelve'}
+];
+
+function initEx10(){
+  const list=document.getElementById('fib-list');list.innerHTML='';
+  EX10_QS.forEach((q,i)=>{
+    const p=document.createElement('p');p.className='fib-sent';
+    const inp=document.createElement('input');
+    inp.type='text';inp.className='fib-input';inp.placeholder='write here…';
+    inp.value=state.ex10[i]||'';inp.dataset.idx=i;
+    const checkInput=()=>{
+      const val=inp.value.trim().toLowerCase().replace(/\s+/g,' ');
+      state.ex10[i]=inp.value;
+      if(val===q.ans){inp.classList.remove('nok-in');inp.classList.add('ok-in');}
+      else if(val.length>0){inp.classList.remove('ok-in');inp.classList.add('nok-in');}
+      else{inp.classList.remove('ok-in','nok-in');}
+      saveState();updateProgress();
     };
-    if (inp.value) checkInput(); inp.addEventListener('input', checkInput);
-    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `)); p.appendChild(inp); p.appendChild(document.createTextNode(` ${q.post}`)); list.appendChild(p);
+    if(inp.value)checkInput();
+    inp.addEventListener('input',checkInput);
+    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `));
+    p.appendChild(inp);
+    p.appendChild(document.createTextNode(` ${q.post}`));
+    list.appendChild(p);
   });
 }
 
-/* --- CÁLCULO DE CALIFICACIÓN Y PDF --- */
-function calculateScore() {
-  let [ex1s,ex2s,ex3s,ex4s,ex5s,ex6s,ex7s,ex8s,ex9s,ex10s] = [state.ex1.length,0,0,0,0,0,0,0,0,0];
-  const [ex1m,ex2m,ex3m,ex4m,ex5m,ex6m,ex7m,ex8m,ex9m,ex10m] = [8,5,5,5,5,5,5,8,5,5];
-
-  Object.keys(MATCH_CORRECT).forEach(k => { if (state.ex2[k] === MATCH_CORRECT[k]) ex2s++; });
-  const ex3ans = { b1:'FIVE', b2:'SEVEN', b3:'TWELVE', b4:'THREE', b5:'TWO' }; Object.keys(ex3ans).forEach(k => { if (state.ex3[k] === ex3ans[k]) ex3s++; });
-  EX4_WORDS.forEach((item, idx) => { if ((state.ex4[idx]||[]).map(o=>o.letter).join('') === item.answer) ex4s++; });
-  EX5_QS.forEach((q, i) => { if (state.ex5[i] === q.ans) ex5s++; }); EX6_QS.forEach((q, i) => { if (state.ex6[i] === q.ans) ex6s++; }); EX7_QS.forEach((q, i) => { if (state.ex7[i] === q.ans) ex7s++; });
-  (state.ex8.even || []).forEach(n => { if (EX8_EVEN.includes(n)) ex8s++; }); (state.ex8.odd  || []).forEach(n => { if (EX8_ODD.includes(n))  ex8s++; });
-  EX9_TARGETS.forEach(t => { if (state.ex9[t.id] === t.ans) ex9s++; }); EX10_QS.forEach((q, i) => { if ((state.ex10[i]||'').trim().toLowerCase().replace(/\s+/g,' ') === q.ans) ex10s++; });
-
-  const total = ex1s+ex2s+ex3s+ex4s+ex5s+ex6s+ex7s+ex8s+ex9s+ex10s, maxTotal = ex1m+ex2m+ex3m+ex4m+ex5m+ex6m+ex7m+ex8m+ex9m+ex10m, grade = total === 0 ? 1 : Math.max(1, Math.round((total/maxTotal)*10*10)/10);
-  return { scores: [ { name:'Ej.1 Sopa de Letras', got:ex1s, max:ex1m }, { name:'Ej.2 Unir Líneas', got:ex2s, max:ex2m }, { name:'Ej.3 Completar', got:ex3s, max:ex3m }, { name:'Ej.4 Unscramble', got:ex4s, max:ex4m }, { name:'Ej.5 Contar', got:ex5s, max:ex5m }, { name:'Ej.6 True/False', got:ex6s, max:ex6m }, { name:'Ej.7 Dropdown', got:ex7s, max:ex7m }, { name:'Ej.8 Par/Impar', got:ex8s, max:ex8m }, { name:'Ej.9 Emoji Match', got:ex9s, max:ex9m }, { name:'Ej.10 Escribir', got:ex10s,max:ex10m } ], total, maxTotal, grade };
+/* ============================================================
+   SCORING
+   ============================================================ */
+function calculateScore(){
+  const ex1s=state.ex1.length,ex1m=8;
+  let ex2s=0,ex2m=5;
+  Object.keys(MATCH_CORRECT).forEach(k=>{if(state.ex2[k]===MATCH_CORRECT[k])ex2s++;});
+  const ex3ans={b1:'FIVE',b2:'SEVEN',b3:'TWELVE',b4:'THREE',b5:'TWO'};
+  let ex3s=0,ex3m=5;
+  Object.keys(ex3ans).forEach(k=>{if(state.ex3[k]===ex3ans[k])ex3s++;});
+  let ex4s=0,ex4m=5;
+  EX4_WORDS.forEach((item,idx)=>{
+    const ans=(state.ex4[idx]||[]).map(o=>o.letter).join('');
+    if(ans===item.answer)ex4s++;
+  });
+  let ex5s=0,ex5m=5;
+  EX5_QS.forEach((q,i)=>{if(state.ex5[i]===q.ans)ex5s++;});
+  let ex6s=0,ex6m=5;
+  EX6_QS.forEach((q,i)=>{if(state.ex6[i]===q.ans)ex6s++;});
+  let ex7s=0,ex7m=5;
+  EX7_QS.forEach((q,i)=>{if(state.ex7[i]===q.ans)ex7s++;});
+  let ex8s=0,ex8m=8;
+  (state.ex8.even||[]).forEach(n=>{if(EX8_EVEN.includes(n))ex8s++;});
+  (state.ex8.odd||[]).forEach(n=>{if(EX8_ODD.includes(n))ex8s++;});
+  let ex9s=0,ex9m=5;
+  EX9_TARGETS.forEach(t=>{if(state.ex9[t.id]===t.ans)ex9s++;});
+  let ex10s=0,ex10m=5;
+  EX10_QS.forEach((q,i)=>{
+    const val=(state.ex10[i]||'').trim().toLowerCase().replace(/\s+/g,' ');
+    if(val===q.ans)ex10s++;
+  });
+  const total=ex1s+ex2s+ex3s+ex4s+ex5s+ex6s+ex7s+ex8s+ex9s+ex10s;
+  const maxTotal=ex1m+ex2m+ex3m+ex4m+ex5m+ex6m+ex7m+ex8m+ex9m+ex10m;
+  const grade=total===0?1:Math.max(1,Math.round((total/maxTotal)*10*10)/10);
+  return{
+    scores:[
+      {name:'Ej.1 Sopa de Letras',got:ex1s,max:ex1m},
+      {name:'Ej.2 Unir con Líneas',got:ex2s,max:ex2m},
+      {name:'Ej.3 Completar Frases',got:ex3s,max:ex3m},
+      {name:'Ej.4 Ordenar Letras',got:ex4s,max:ex4m},
+      {name:'Ej.5 Contar Emojis',got:ex5s,max:ex5m},
+      {name:'Ej.6 Verdadero/Falso',got:ex6s,max:ex6m},
+      {name:'Ej.7 Menú Desplegable',got:ex7s,max:ex7m},
+      {name:'Ej.8 Par/Impar',got:ex8s,max:ex8m},
+      {name:'Ej.9 Emparejar Emojis',got:ex9s,max:ex9m},
+      {name:'Ej.10 Escribir Respuesta',got:ex10s,max:ex10m}
+    ],
+    total,maxTotal,grade
+  };
 }
 
-function generatePDF() {
-  const name = document.getElementById('inp-name').value.trim(), nie = document.getElementById('inp-nie').value.trim();
-  if (!name || !nie) { showToast('⚠️ Por favor ingresa tu Nombre y NIE primero'); return; }
+/* ============================================================
+   PDF GENERATION — FIXED
+   ============================================================ */
+function generatePDF(){
+  const name=document.getElementById('inp-name').value.trim();
+  const nie=document.getElementById('inp-nie').value.trim();
+  if(!name||!nie){showToast('⚠️ Ingresa tu Nombre y NIE primero');return;}
 
-  const score = calculateScore();
-  document.getElementById('pdf-name').textContent = name; document.getElementById('pdf-nie').textContent  = nie;
-  const now = new Date(); document.getElementById('pdf-date').textContent = now.toLocaleDateString('es-SV') + ' ' + now.toLocaleTimeString('es-SV');
+  const score=calculateScore();
+  document.getElementById('pdf-name').textContent=name;
+  document.getElementById('pdf-nie').textContent=nie;
+  document.getElementById('pdf-date').textContent=
+    new Date().toLocaleDateString('es-GT',{year:'numeric',month:'long',day:'numeric'});
 
-  const grid = document.getElementById('pdf-scores'); grid.innerHTML = '';
-  score.scores.forEach(s => {
-    const pct = Math.round((s.got/s.max)*100), color = pct >= 70 ? '#16A34A' : pct >= 50 ? '#D97706' : '#DC2626';
-    grid.innerHTML += `<div class="pdf-row"><span class="pdf-rn">${s.name}</span><span class="pdf-rv" style="color:${color}">${s.got}/${s.max}</span></div>`;
+  const grid=document.getElementById('pdf-scores');
+  grid.innerHTML='';
+  score.scores.forEach(s=>{
+    const pct=Math.round((s.got/s.max)*100);
+    const color=pct>=70?'#16A34A':pct>=50?'#D97706':'#DC2626';
+    const row=document.createElement('div');row.className='pdf-row';
+    row.innerHTML=`<span class="pdf-rn">${s.name}</span><span class="pdf-rv" style="color:${color}">${s.got}/${s.max}</span>`;
+    grid.appendChild(row);
   });
 
-  document.getElementById('pdf-total-str').textContent = `${score.total} / ${score.maxTotal} puntos`;
-  document.getElementById('pdf-grade-footer').innerHTML = `Final Grade: <strong>${score.grade}/10</strong> &nbsp;·&nbsp; Total: ${score.total}/${score.maxTotal} &nbsp;·&nbsp; ID: ${nie}`;
+  document.getElementById('pdf-total-str').textContent=
+    `${score.total} / ${score.maxTotal} puntos`;
 
-  document.getElementById('pdf-loading').style.display = 'flex'; document.getElementById('pdf-btn').disabled = true;
+  document.getElementById('pdf-grade-footer').innerHTML=
+    `Nota final: <strong>${score.grade}/10</strong> &nbsp;·&nbsp; ${score.total}/${score.maxTotal} pts &nbsp;·&nbsp; ${name} &nbsp;·&nbsp; NIE: ${nie}`;
 
-  const el = document.getElementById('pdf-wrap');
+  document.getElementById('pdf-loading').style.display='flex';
+  document.getElementById('pdf-btn').disabled=true;
 
-  // html2pdf renderiza sobre el elemento, que al estar en -9999px será capturado perfectamente
-  html2pdf().set({
-    margin: [10, 10, 10, 10],
-    filename: `COEDUCA_Examen_${name.replace(/\s+/g,'_')}.pdf`,
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, letterRendering: true, windowWidth: 800 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  }).from(el).save().then(() => {
-    document.getElementById('pdf-loading').style.display = 'none'; document.getElementById('pdf-btn').disabled = false;
-    showToast('✅ PDF descargado correctamente');
-  }).catch(err => {
+  const el=document.getElementById('pdf-wrap');
+  // Move into normal flow temporarily so html2pdf can capture it
+  el.style.position='static';
+  el.style.left='0';
+  el.style.display='block';
+
+  const opt={
+    margin:[10,10,10,10],
+    filename:`Examen_Numbers_${name.replace(/\s+/g,'_')}.pdf`,
+    image:{type:'jpeg',quality:0.97},
+    html2canvas:{scale:2,useCORS:true,logging:false,letterRendering:true},
+    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+  };
+
+  html2pdf().set(opt).from(el).save().then(()=>{
+    el.style.position='fixed';
+    el.style.left='-9999px';
+    document.getElementById('pdf-loading').style.display='none';
+    document.getElementById('pdf-btn').disabled=false;
+    showToast('✅ PDF descargado con éxito');
+  }).catch(err=>{
     console.error(err);
-    document.getElementById('pdf-loading').style.display = 'none'; document.getElementById('pdf-btn').disabled = false;
-    showToast('❌ Ocurrió un error al generar el PDF.');
+    el.style.position='fixed';
+    el.style.left='-9999px';
+    document.getElementById('pdf-loading').style.display='none';
+    document.getElementById('pdf-btn').disabled=false;
+    showToast('❌ Error al generar PDF. Intenta de nuevo.');
   });
 }
 
-/* --- INICIALIZAR --- */
-document.addEventListener('DOMContentLoaded', () => {
-  loadState();
-  if (state.name) document.getElementById('inp-name').value = state.name;
-  if (state.nie)  document.getElementById('inp-nie').value  = state.nie;
-  document.getElementById('inp-name').addEventListener('input', saveState);
-  document.getElementById('inp-nie').addEventListener('input', saveState);
+/* ============================================================
+   TOAST
+   ============================================================ */
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2600);
+}
 
-  initWordSearch(); initMatch(); initEx3(); initEx4(); initEx5();
-  initEx6(); initEx7(); initEx8(); initEx9(); initEx10();
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded',()=>{
+  loadState();
+  if(state.name)document.getElementById('inp-name').value=state.name;
+  if(state.nie)document.getElementById('inp-nie').value=state.nie;
+  document.getElementById('inp-name').addEventListener('input',saveState);
+  document.getElementById('inp-nie').addEventListener('input',saveState);
+  initWordSearch();
+  initMatch();
+  initEx3();
+  initEx4();
+  initEx5();
+  initEx6();
+  initEx7();
+  initEx8();
+  initEx9();
+  initEx10();
   updateProgress();
 });
 </script>
