@@ -1422,24 +1422,34 @@ function generatePDF(){
     margin:[10,10,10,10],
     filename:`Examen_Numbers_${name.replace(/\s+/g,'_')}.pdf`,
     image:{type:'jpeg',quality:0.97},
-    html2canvas:{scale:2,useCORS:true,logging:false,letterRendering:true,windowWidth:820},
+    html2canvas:{
+      scale:2,
+      useCORS:true,
+      logging:false,
+      letterRendering:true,
+      windowWidth:820,
+      scrollY: 0 // <-- SOLUCIÓN 1: Fuerza la captura desde el top 0
+    },
     jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
   };
 
-  html2pdf().set(opt).from(el).save().then(()=>{
-    outer.style.left='-9999px';
-    outer.style.zIndex='-1';
-    document.getElementById('pdf-loading').style.display='none';
-    document.getElementById('pdf-btn').disabled=false;
-    showToast('✅ PDF descargado con éxito');
-  }).catch(err=>{
-    console.error(err);
-    outer.style.left='-9999px';
-    outer.style.zIndex='-1';
-    document.getElementById('pdf-loading').style.display='none';
-    document.getElementById('pdf-btn').disabled=false;
-    showToast('❌ Error al generar PDF. Intenta de nuevo.');
-  });
+  // <-- SOLUCIÓN 2: Damos 100ms al navegador para renderizar el elemento visualmente
+  setTimeout(() => {
+    html2pdf().set(opt).from(el).save().then(()=>{
+      outer.style.left='-9999px';
+      outer.style.zIndex='-1';
+      document.getElementById('pdf-loading').style.display='none';
+      document.getElementById('pdf-btn').disabled=false;
+      showToast('✅ PDF descargado con éxito');
+    }).catch(err=>{
+      console.error(err);
+      outer.style.left='-9999px';
+      outer.style.zIndex='-1';
+      document.getElementById('pdf-loading').style.display='none';
+      document.getElementById('pdf-btn').disabled=false;
+      showToast('❌ Error al generar PDF. Intenta de nuevo.');
+    });
+  }, 100);
 }
 
 /* ============================================================
