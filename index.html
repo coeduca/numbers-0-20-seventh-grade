@@ -233,9 +233,16 @@ footer{text-align:center;padding:30px 20px 60px}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
 /* ===== PDF CONTAINER — FIXED ===== */
+#pdf-outer{
+  position:absolute;
+  left:-9999px;
+  top:0;
+  width:780px;
+  height:auto;
+  overflow:visible;
+  z-index:-1;
+}
 #pdf-wrap{
-  position:fixed;
-  left:-9999px;top:0;
   width:780px;
   background:white;
   font-family:'Arial',sans-serif;
@@ -505,7 +512,7 @@ footer{text-align:center;padding:30px 20px 60px}
 </footer>
 
 <!-- PDF CONTAINER — rendered off-screen, captured by html2pdf -->
-<div id="pdf-wrap">
+<div id="pdf-outer"><div id="pdf-wrap">
   <div class="pdf-h">
     <div class="pdf-hi">
       <h2>COEDUCA — Evaluación de Inglés</h2>
@@ -529,7 +536,7 @@ footer{text-align:center;padding:30px 20px 60px}
     <strong id="pdf-total-str">—</strong>
   </div>
   <div class="pdf-grade-footer" id="pdf-grade-footer"></div>
-</div>
+</div></div>
 
 <div class="toast" id="toast"></div>
 
@@ -1125,8 +1132,14 @@ const EX8_EVEN=[4,10,16,2];
 const EX8_ODD=[7,13,19,15];
 
 function initEx8(){
-  if(!state.ex8||!Array.isArray(state.ex8.bank))
-    state.ex8={bank:[...EX8_NUMBERS],even:[],odd:[]};
+  // Always ensure all three arrays exist; preserve valid saved data
+  if(!state.ex8)state.ex8={};
+  if(!Array.isArray(state.ex8.bank))state.ex8.bank=[...EX8_NUMBERS];
+  if(!Array.isArray(state.ex8.even))state.ex8.even=[];
+  if(!Array.isArray(state.ex8.odd))state.ex8.odd=[];
+  // If all three are empty arrays and bank is empty too, it means corrupt state - reset
+  const total=(state.ex8.bank.length+state.ex8.even.length+state.ex8.odd.length);
+  if(total===0)state.ex8={bank:[...EX8_NUMBERS],even:[],odd:[]};
   const bank=document.getElementById('eo-bank');
   const evenDrop=document.getElementById('eo-even');
   const oddDrop=document.getElementById('eo-odd');
@@ -1400,29 +1413,29 @@ function generatePDF(){
   document.getElementById('pdf-btn').disabled=true;
 
   const el=document.getElementById('pdf-wrap');
-  // Move into normal flow temporarily so html2pdf can capture it
-  el.style.position='static';
-  el.style.left='0';
-  el.style.display='block';
+  // Temporarily move into viewport so html2canvas can render it
+  const outer=document.getElementById('pdf-outer');
+  outer.style.left='0';
+  outer.style.zIndex='9999';
 
   const opt={
     margin:[10,10,10,10],
     filename:`Examen_Numbers_${name.replace(/\s+/g,'_')}.pdf`,
     image:{type:'jpeg',quality:0.97},
-    html2canvas:{scale:2,useCORS:true,logging:false,letterRendering:true},
+    html2canvas:{scale:2,useCORS:true,logging:false,letterRendering:true,windowWidth:820},
     jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
   };
 
   html2pdf().set(opt).from(el).save().then(()=>{
-    el.style.position='fixed';
-    el.style.left='-9999px';
+    outer.style.left='-9999px';
+    outer.style.zIndex='-1';
     document.getElementById('pdf-loading').style.display='none';
     document.getElementById('pdf-btn').disabled=false;
     showToast('✅ PDF descargado con éxito');
   }).catch(err=>{
     console.error(err);
-    el.style.position='fixed';
-    el.style.left='-9999px';
+    outer.style.left='-9999px';
+    outer.style.zIndex='-1';
     document.getElementById('pdf-loading').style.display='none';
     document.getElementById('pdf-btn').disabled=false;
     showToast('❌ Error al generar PDF. Intenta de nuevo.');
