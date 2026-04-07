@@ -1431,12 +1431,12 @@ function generatePDF(){
       useCORS: true,
       logging: false,
       letterRendering: true,
-      windowWidth: 820,
-      width: 780,     // Forzamos el ancho exacto del contenedor
-      scrollX: 0,     // Previene recortes horizontales
-      scrollY: 0,     // Previene recortes verticales
-      x: 0,           // Fuerza el punto de inicio X al ras del elemento
-      y: 0            // Fuerza el punto de inicio Y al ras del elemento
+      windowWidth: 850,   // Engañamos a la librería diciéndole que la pantalla es más ancha
+      width: 800,         // Le damos 20px extra de holgura para no morder el texto
+      scrollX: 0,
+      scrollY: 0,
+      x: 0,
+      y: 0
     },
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   };
