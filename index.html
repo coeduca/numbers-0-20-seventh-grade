@@ -40,6 +40,7 @@ body{
   min-height:100vh;
   background-image:radial-gradient(circle at 15% 85%,rgba(77,150,255,.07) 0%,transparent 50%),
                    radial-gradient(circle at 85% 15%,rgba(155,93,229,.07) 0%,transparent 50%);
+  overflow-x: hidden;
 }
 
 /* ============================================================
@@ -99,16 +100,17 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .instr::before{content:'💡';flex-shrink:0}
 
 /* ============================================================
-   EX1: WORD SEARCH (SOLUCIONADO PARA MOBILE)
+   EX1: WORD SEARCH (SOLUCIÓN COMPACTA PARA MÓVIL)
    ============================================================ */
 .ws-outer{display:flex;flex-direction:column;align-items:center;gap:20px;width: 100%;}
-.ws-scroll-wrapper{width: 100%; overflow-x: auto; padding-bottom: 10px; display: flex; justify-content: center;}
-.ws-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;user-select:none;touch-action:none; width: max-content; padding: 5px;}
-.ws-cell{width: 38px; height: 38px; display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:700;font-size: 1rem;border-radius:7px;cursor:pointer;transition:.12s;background:#F3F4F6;color:var(--text);border:2px solid transparent}
+/* La grilla ahora es responsiva y compacta, encaja en cualquier móvil */
+.ws-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;user-select:none;touch-action:none; width: 100%; max-width: 400px; padding: 5px; margin: 0 auto;}
+/* Usamos aspect-ratio para que sean cuadrados perfectos sin importar el ancho */
+.ws-cell{width: 100%; aspect-ratio: 1; display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:700;font-size: clamp(0.75rem, 4vw, 1.1rem);border-radius:6px;cursor:pointer;transition:.12s;background:#F3F4F6;color:var(--text);border:2px solid transparent}
 .ws-cell.sel{background:#BFDBFE;border-color:#93C5FD;color:#1E40AF}
 .ws-cell.found{background:#D1FAE5!important;border-color:#6BCB77!important;color:#065F46!important;animation:pop .3s ease}
 @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
-.ws-words{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.ws-words{display:flex;flex-wrap:wrap;gap:8px;justify-content:center; max-width: 500px;}
 .ws-tag{padding:5px 14px;border:2px solid var(--border);border-radius:20px;font-family:'Baloo 2',cursive;font-weight:700;font-size:.85rem;color:var(--muted);transition:.3s}
 .ws-tag.found{background:#D1FAE5;border-color:#6BCB77;color:#065F46;text-decoration:line-through}
 
@@ -126,7 +128,7 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .btn-reset:hover{border-color:var(--coral);color:var(--coral)}
 
 /* ============================================================
-   DRAG & DROP SHARED (CORREGIDO)
+   DRAG & DROP SHARED
    ============================================================ */
 .word-bank{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);margin-bottom:22px;min-height:74px;transition:.2s; align-items: center; justify-content: center;}
 .word-bank.drag-over-bank{border-color:var(--blue);background:#EFF6FF}
@@ -198,7 +200,7 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .dd-select:focus{outline:none;border-color:var(--blue); box-shadow: 0 0 0 3px rgba(77,150,255,.2);}
 
 /* ============================================================
-   EX8: EVEN/ODD (SOLUCIONADO COMPLETAMENTE)
+   EX8: EVEN/ODD
    ============================================================ */
 .eo-bank{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);min-height:74px;margin-bottom:22px; justify-content: center;}
 .n-chip{padding:10px 20px;border-radius:12px;font-family:'Baloo 2',cursive;font-weight:800;font-size:1.2rem;cursor:grab;user-select:none;touch-action:none;background:white;border:2px solid var(--border);transition:.2s; display: inline-flex;}
@@ -215,7 +217,7 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .eo-odd .eo-drop.over{outline-color: #FCD34D;}
 
 /* ============================================================
-   EX9: EMOJI MATCH (RESPONSIVO Y SOLUCIONADO)
+   EX9: EMOJI MATCH
    ============================================================ */
 .em-bank{display:flex;flex-wrap:wrap;gap:10px;padding:16px;background:#F9FAFB;border:2px dashed var(--border);border-radius:var(--rs);margin-bottom:22px;min-height:74px; justify-content: center; align-items: center;}
 .em-targets{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px}
@@ -228,7 +230,7 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .em-slot{min-height:42px;width: 100%; display:flex;align-items:center;justify-content:center; margin-top: 5px;}
 
 /* ============================================================
-   EX10: FILL BLANK TYPE (SOLUCIONADO)
+   EX10: FILL BLANK TYPE
    ============================================================ */
 .fib-list{display:flex;flex-direction:column;gap:16px}
 .fib-sent{font-size:1.1rem;font-weight:600;line-height:2.2; padding: 12px 18px; background: #F9FAFB; border-radius: 8px; border: 1px solid #f1f1f1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;}
@@ -238,7 +240,7 @@ main{max-width:920px;margin:0 auto;padding:40px 16px}
 .fib-input.nok-in{border-bottom-color:#EF4444;color:#DC2626; background: #fef2f2;}
 
 /* ============================================================
-   FOOTER & PDF STYLES
+   FOOTER
    ============================================================ */
 footer{text-align:center;padding:30px 20px 60px}
 .pdf-btn{display:inline-flex;align-items:center;gap:12px;padding:18px 44px;background:linear-gradient(135deg,#FF6B6B,#FF4757);color:white;border:none;border-radius:50px;font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:700;cursor:pointer;transition:.3s;box-shadow:0 8px 32px rgba(255,107,107,.4)}
@@ -256,9 +258,23 @@ footer{text-align:center;padding:30px 20px 60px}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
 /* ============================================================
-   PDF HIDDEN CONTAINER (ANTI-TRAMPAS)
+   PDF HIDDEN CONTAINER (SOLUCIÓN PARA PDF EN BLANCO Y ANTI-TRAMPAS)
    ============================================================ */
-#pdf-wrap{display:none;position:absolute;left:-9999px;top:0;width:800px;background:white;font-family:'Nunito',sans-serif;color:#1A1A2E;padding:40px}
+/* CRÍTICO: No usamos 'display: none'. Lo posicionamos fuera de la pantalla 
+   (-9999px) pero sigue siendo un bloque renderizado en el DOM. 
+   Esto garantiza que html2canvas siempre lo capture completo y con estilos. 
+*/
+#pdf-wrap{
+  position:absolute;
+  left:-9999px;
+  top:0;
+  width:800px;
+  background:white;
+  font-family:'Nunito',sans-serif;
+  color:#1A1A2E;
+  padding:40px;
+  z-index:-1000;
+}
 .pdf-h{background:linear-gradient(135deg,#1B3A6B,#0a1f40);color:white;padding:26px 32px;border-radius:12px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:20px}
 .pdf-hi h2{font-size:1.5rem;font-weight:800;margin-bottom:6px; font-family: 'Baloo 2', cursive;}
 .pdf-hi p{font-size:.85rem;opacity:.8}
@@ -277,7 +293,7 @@ footer{text-align:center;padding:30px 20px 60px}
 .pdf-total{background:linear-gradient(135deg,#1B3A6B,#2D5A9E);color:white;border-radius:10px;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 .pdf-total span{font-size:.95rem;opacity:.9; font-weight: 600;}
 .pdf-total strong{font-size:1.4rem;font-weight:800}
-.pdf-footer-grade{position:fixed;bottom:12px;right:16px;font-size:.65rem;color:#9CA3AF;text-align:right;line-height:1.5; font-weight: 700;}
+.pdf-footer-grade{position:absolute;bottom:12px;right:16px;font-size:.65rem;color:#9CA3AF;text-align:right;line-height:1.5; font-weight: 700;}
 
 /* ============================================================
    RESPONSIVE DESIGN (MOBILE)
@@ -290,15 +306,9 @@ footer{text-align:center;padding:30px 20px 60px}
   .em-targets{grid-template-columns:repeat(2,1fr)}
   .ex-body{padding:20px 16px}
   .ex-head{padding:16px}
-  .pdf-grid{grid-template-columns:1fr}
-  .pdf-stu{grid-template-columns:1fr}
-  
-  /* Arreglo Sopa de Letras Mobile */
-  .ws-cell{width: 32px; height: 32px; font-size: .85rem;}
   .fib-sent { flex-direction: column; align-items: flex-start; }
 }
 @media(max-width:380px){
-  .ws-cell{width: 28px; height: 28px; font-size: .75rem;}
   .em-targets{grid-template-columns:1fr}
 }
 </style>
@@ -343,11 +353,9 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="ex-ico">🔍</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Desliza o haz clic desde la primera hasta la última letra para seleccionar la palabra. (Horizontal o vertical). Si estás en móvil, puedes deslizar la sopa hacia los lados.</div>
+    <div class="instr">Desliza o haz clic desde la primera hasta la última letra para seleccionar la palabra. (Horizontal o vertical).</div>
     <div class="ws-outer">
-      <div class="ws-scroll-wrapper">
-        <div class="ws-grid" id="ws-grid"></div>
-      </div>
+      <div class="ws-grid" id="ws-grid"></div>
       <div class="ws-words" id="ws-words"></div>
     </div>
   </div>
@@ -430,7 +438,7 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="ex-ico">✅</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Selecciona <strong>True</strong> (Verdadero) o <strong>False</strong> (Falso) para cada afirmación matemática o de secuencia.</div>
+    <div class="instr">Selecciona <strong>True</strong> (Verdadero) o <strong>False</strong> (Falso) para cada afirmación.</div>
     <div class="tf-list" id="tf-list"></div>
   </div>
 </div>
@@ -485,7 +493,7 @@ footer{text-align:center;padding:30px 20px 60px}
     <div class="ex-ico">🌟</div>
   </div>
   <div class="ex-body">
-    <div class="instr">Cuenta los emojis de cada cuadro y arrastra la palabra correspondiente hacia él. Haz clic en la palabra para devolverla al banco.</div>
+    <div class="instr">Cuenta los emojis de cada cuadro y arrastra la palabra correspondiente hacia él. Haz clic en la palabra para devolverla.</div>
     <div class="em-bank" id="em-bank" data-bank="9"></div>
     <div class="em-targets" id="em-targets"></div>
   </div>
@@ -549,19 +557,12 @@ footer{text-align:center;padding:30px 20px 60px}
 
 <script>
 /* --- ESTADO Y ALMACENAMIENTO (LOCALSTORAGE) --- */
-const STATE_KEY = 'coeduca_numbers_final_v1';
+const STATE_KEY = 'coeduca_numbers_final_v2';
 let state = {
   name: '', nie: '',
-  ex1: [],        // Palabras encontradas
-  ex2: {},        // Conexiones match (izq -> der)
-  ex3: {},        // blank_id -> palabra_depositada
-  ex4: {},        // id_pregunta -> array_letras
-  ex5: {},        // id_pregunta -> respuesta
-  ex6: {},        // id_pregunta -> true/false
-  ex7: {},        // id_pregunta -> seleccion_dropdown
-  ex8: { bank: [], even: [], odd: [] }, // Estado de fichas pares/impares
-  ex9: {},        // target_id -> palabra_depositada
-  ex10: {}        // id_pregunta -> texto_escrito
+  ex1: [], ex2: {}, ex3: {}, ex4: {}, ex5: {}, 
+  ex6: {}, ex7: {}, ex8: { bank: [], even: [], odd: [] }, 
+  ex9: {}, ex10: {}
 };
 
 function saveState() {
@@ -592,12 +593,11 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2600);
 }
 
-/* --- MOTOR DRAG & DROP MULTI-DISPOSITIVO (TOUCH & MOUSE) --- */
+/* --- MOTOR DRAG & DROP MULTI-DISPOSITIVO --- */
 let drag = { active: false, ghost: null, srcEl: null, srcGroup: null, srcId: null };
 
 function makeDraggable(el, group, id) {
-  el.dataset.dragGroup = group;
-  el.dataset.dragId = id;
+  el.dataset.dragGroup = group; el.dataset.dragId = id;
   el.addEventListener('mousedown', dndStart, { passive: false });
   el.addEventListener('touchstart', dndStart, { passive: false });
 }
@@ -605,17 +605,12 @@ function makeDraggable(el, group, id) {
 function dndStart(e) {
   e.preventDefault();
   const touch = e.touches ? e.touches[0] : e;
-  drag.srcEl = e.currentTarget;
-  drag.srcGroup = drag.srcEl.dataset.dragGroup;
-  drag.srcId = drag.srcEl.dataset.dragId;
+  drag.srcEl = e.currentTarget; drag.srcGroup = drag.srcEl.dataset.dragGroup; drag.srcId = drag.srcEl.dataset.dragId;
   drag.active = true;
 
-  // Crear elemento fantasma visual
   const g = drag.srcEl.cloneNode(true);
-  g.classList.add('d-ghost');
-  g.style.width = drag.srcEl.offsetWidth + 'px';
-  document.body.appendChild(g);
-  drag.ghost = g;
+  g.classList.add('d-ghost'); g.style.width = drag.srcEl.offsetWidth + 'px';
+  document.body.appendChild(g); drag.ghost = g;
   drag.srcEl.classList.add('dragging-src');
   
   positionGhost(touch.clientX, touch.clientY);
@@ -628,7 +623,7 @@ function dndStart(e) {
 
 function dndMove(e) {
   if (!drag.active) return;
-  e.preventDefault(); // Evitar scroll de la pagina mientras se arrastra
+  e.preventDefault(); 
   const touch = e.touches ? e.touches[0] : e;
   positionGhost(touch.clientX, touch.clientY);
   autoScroll(touch.clientY);
@@ -642,7 +637,6 @@ function positionGhost(x, y) {
 }
 
 function autoScroll(cy) {
-  // CRÍTICO: Scroll automático en zona de 70px superior e inferior
   const ZONE = 70, SPD = 12;
   if (cy < ZONE) window.scrollBy(0, -SPD);
   else if (cy > window.innerHeight - ZONE) window.scrollBy(0, SPD);
@@ -652,7 +646,6 @@ function highlightDropTarget(x, y) {
   document.querySelectorAll('.drop-blank.over, .eo-drop.over, .em-target.over, .word-bank.drag-over-bank')
     .forEach(el => el.classList.remove('over','drag-over-bank'));
   
-  // Ocultar ghost momentaneamente para que elementFromPoint detecte el contenedor de abajo
   drag.ghost.style.display = 'none';
   const el = document.elementFromPoint(x, y);
   drag.ghost.style.display = '';
@@ -676,8 +669,7 @@ function dndEnd(e) {
 
   drag.ghost.style.display = 'none';
   const el = document.elementFromPoint(touch.clientX, touch.clientY);
-  drag.ghost.remove();
-  drag.ghost = null;
+  drag.ghost.remove(); drag.ghost = null;
   drag.srcEl.classList.remove('dragging-src');
 
   if (el) {
@@ -723,89 +715,56 @@ const WS_WORDS = {
 let wsSelStart = null, wsSelCells = [], wsDragging = false;
 
 function initWordSearch() {
-  const grid = document.getElementById('ws-grid');
-  grid.innerHTML = '';
+  const grid = document.getElementById('ws-grid'); grid.innerHTML = '';
   WS_GRID.forEach((row, r) => {
     row.forEach((letter, c) => {
-      const cell = document.createElement('div');
-      cell.className = 'ws-cell';
-      cell.textContent = letter;
-      cell.dataset.r = r; cell.dataset.c = c;
+      const cell = document.createElement('div'); cell.className = 'ws-cell'; cell.textContent = letter; cell.dataset.r = r; cell.dataset.c = c;
       if (state.ex1.some(w => WS_WORDS[w] && WS_WORDS[w].some(p => p.r===r&&p.c===c))) cell.classList.add('found');
       grid.appendChild(cell);
     });
   });
 
-  const words = document.getElementById('ws-words');
-  words.innerHTML = '';
+  const words = document.getElementById('ws-words'); words.innerHTML = '';
   Object.keys(WS_WORDS).forEach(w => {
-    const tag = document.createElement('div');
-    tag.className = 'ws-tag' + (state.ex1.includes(w) ? ' found' : '');
-    tag.textContent = w;
-    tag.id = 'ws-tag-' + w;
+    const tag = document.createElement('div'); tag.className = 'ws-tag' + (state.ex1.includes(w) ? ' found' : ''); tag.textContent = w; tag.id = 'ws-tag-' + w;
     words.appendChild(tag);
   });
 
-  grid.addEventListener('mousedown', wsStart);
-  grid.addEventListener('mousemove', wsMove);
-  document.addEventListener('mouseup', wsEnd);
-  grid.addEventListener('touchstart', wsStart, { passive: false });
-  grid.addEventListener('touchmove', wsMove, { passive: false });
-  document.addEventListener('touchend', wsEnd, { passive: false });
+  grid.addEventListener('mousedown', wsStart); grid.addEventListener('mousemove', wsMove); document.addEventListener('mouseup', wsEnd);
+  grid.addEventListener('touchstart', wsStart, { passive: false }); grid.addEventListener('touchmove', wsMove, { passive: false }); document.addEventListener('touchend', wsEnd, { passive: false });
 }
 function wsGetCell(x, y) {
-  const el = document.elementFromPoint(x, y);
-  return el && el.classList.contains('ws-cell') ? el : null;
+  const el = document.elementFromPoint(x, y); return el && el.classList.contains('ws-cell') ? el : null;
 }
 function wsStart(e) {
-  const touch = e.touches ? e.touches[0] : e;
-  const cell = wsGetCell(touch.clientX, touch.clientY);
+  const touch = e.touches ? e.touches[0] : e; const cell = wsGetCell(touch.clientX, touch.clientY);
   if (!cell) return;
-  e.preventDefault();
-  wsDragging = true;
-  wsSelStart = { r: +cell.dataset.r, c: +cell.dataset.c };
-  wsHighlight([cell]);
+  e.preventDefault(); wsDragging = true; wsSelStart = { r: +cell.dataset.r, c: +cell.dataset.c }; wsHighlight([cell]);
 }
 function wsMove(e) {
   if (!wsDragging) return;
-  e.preventDefault();
-  const touch = e.touches ? e.touches[0] : e;
-  const endCell = wsGetCell(touch.clientX, touch.clientY);
+  e.preventDefault(); const touch = e.touches ? e.touches[0] : e; const endCell = wsGetCell(touch.clientX, touch.clientY);
   if (!endCell) return;
-  const er = +endCell.dataset.r, ec = +endCell.dataset.c;
-  const sr = wsSelStart.r, sc = wsSelStart.c;
-  const dr = er - sr, dc = ec - sc;
-  const len = Math.max(Math.abs(dr), Math.abs(dc));
+  const er = +endCell.dataset.r, ec = +endCell.dataset.c, sr = wsSelStart.r, sc = wsSelStart.c, dr = er - sr, dc = ec - sc, len = Math.max(Math.abs(dr), Math.abs(dc));
   if (len === 0) { wsHighlight([wsGetGridCell(sr,sc)]); return; }
-  if (dr !== 0 && dc !== 0) return; // Solo Horizontal y Vertical
-  const stepR = dr===0 ? 0 : Math.sign(dr);
-  const stepC = dc===0 ? 0 : Math.sign(dc);
-  const cells = [];
-  for (let i = 0; i <= len; i++) {
-    const cell = wsGetGridCell(sr + i*stepR, sc + i*stepC);
-    if (cell) cells.push(cell);
-  }
+  if (dr !== 0 && dc !== 0) return;
+  const stepR = dr===0 ? 0 : Math.sign(dr), stepC = dc===0 ? 0 : Math.sign(dc), cells = [];
+  for (let i = 0; i <= len; i++) { const cell = wsGetGridCell(sr + i*stepR, sc + i*stepC); if (cell) cells.push(cell); }
   wsHighlight(cells);
 }
 function wsEnd(e) {
   if (!wsDragging) return;
   wsDragging = false;
-  const word = wsSelCells.map(c => c.textContent).join('');
-  const revWord = wsSelCells.map(c => c.textContent).reverse().join('');
+  const word = wsSelCells.map(c => c.textContent).join(''), revWord = wsSelCells.map(c => c.textContent).reverse().join('');
   const found = WS_WORDS[word] ? word : (WS_WORDS[revWord] ? revWord : null);
   if (found && !state.ex1.includes(found)) {
-    state.ex1.push(found);
-    wsSelCells.forEach(c => c.classList.add('found'));
-    document.getElementById('ws-tag-' + found).classList.add('found');
-    showToast('¡Encontraste ' + found + '! 🎉');
-    saveState();
+    state.ex1.push(found); wsSelCells.forEach(c => c.classList.add('found')); document.getElementById('ws-tag-' + found).classList.add('found');
+    showToast('¡Encontraste ' + found + '! 🎉'); saveState();
   }
-  wsHighlight([]);
-  wsSelCells = [];
+  wsHighlight([]); wsSelCells = [];
 }
 function wsHighlight(cells) {
-  document.querySelectorAll('.ws-cell.sel').forEach(c => c.classList.remove('sel'));
-  wsSelCells = cells;
+  document.querySelectorAll('.ws-cell.sel').forEach(c => c.classList.remove('sel')); wsSelCells = cells;
   cells.forEach(c => { if (c && !c.classList.contains('found')) c.classList.add('sel'); });
 }
 function wsGetGridCell(r, c) { return document.querySelector(`.ws-cell[data-r="${r}"][data-c="${c}"]`); }
@@ -822,40 +781,29 @@ function initMatch() {
   leftCol.innerHTML = ''; rightCol.innerHTML = '';
 
   MATCH_LEFT.forEach(word => {
-    const btn = document.createElement('div');
-    btn.className = 'match-item'; btn.textContent = word; btn.dataset.id = word;
-    btn.addEventListener('click', () => matchClickLeft(btn));
-    leftCol.appendChild(btn);
+    const btn = document.createElement('div'); btn.className = 'match-item'; btn.textContent = word; btn.dataset.id = word;
+    btn.addEventListener('click', () => matchClickLeft(btn)); leftCol.appendChild(btn);
   });
   MATCH_RIGHT.forEach(num => {
-    const btn = document.createElement('div');
-    btn.className = 'match-item'; btn.textContent = num; btn.dataset.id = num;
-    btn.addEventListener('click', () => matchClickRight(btn));
-    rightCol.appendChild(btn);
+    const btn = document.createElement('div'); btn.className = 'match-item'; btn.textContent = num; btn.dataset.id = num;
+    btn.addEventListener('click', () => matchClickRight(btn)); rightCol.appendChild(btn);
   });
   if (state.ex2 && Object.keys(state.ex2).length) {
-    Object.keys(state.ex2).forEach((lid, i) => {
-      applyMatchColor(lid, state.ex2[lid], PAIR_COLORS[i % PAIR_COLORS.length]);
-    });
+    Object.keys(state.ex2).forEach((lid, i) => { applyMatchColor(lid, state.ex2[lid], PAIR_COLORS[i % PAIR_COLORS.length]); });
     setTimeout(drawAllMatchLines, 150);
   }
 }
 function matchClickLeft(btn) {
   document.querySelectorAll('.match-item.sel-left').forEach(b => b.classList.remove('sel-left'));
   if (matchPending === btn) { matchPending = null; return; }
-  matchPending = btn;
-  btn.classList.add('sel-left');
+  matchPending = btn; btn.classList.add('sel-left');
 }
 function matchClickRight(btn) {
   if (!matchPending) return;
   const lid = matchPending.dataset.id, rid = btn.dataset.id;
-  Object.keys(state.ex2).forEach(k => {
-    if (k === lid || state.ex2[k] === rid) { clearMatchColor(k, state.ex2[k]); delete state.ex2[k]; }
-  });
-  state.ex2[lid] = rid;
-  applyMatchColor(lid, rid, PAIR_COLORS[(Object.values(state.ex2).length - 1) % PAIR_COLORS.length]);
-  matchPending.classList.remove('sel-left'); matchPending = null;
-  drawAllMatchLines(); saveState();
+  Object.keys(state.ex2).forEach(k => { if (k === lid || state.ex2[k] === rid) { clearMatchColor(k, state.ex2[k]); delete state.ex2[k]; } });
+  state.ex2[lid] = rid; applyMatchColor(lid, rid, PAIR_COLORS[(Object.values(state.ex2).length - 1) % PAIR_COLORS.length]);
+  matchPending.classList.remove('sel-left'); matchPending = null; drawAllMatchLines(); saveState();
 }
 function applyMatchColor(lid, rid, color) {
   const le = document.querySelector(`.match-item[data-id="${lid}"]`), re = document.querySelector(`.match-item[data-id="${rid}"]`);
@@ -873,22 +821,16 @@ function drawAllMatchLines() {
   Object.keys(state.ex2).forEach((lid, i) => {
     const le = document.querySelector(`.match-item[data-id="${lid}"]`), re = document.querySelector(`.match-item[data-id="${state.ex2[lid]}"]`);
     if (!le || !re) return;
-    const lr = le.getBoundingClientRect(), rr = re.getBoundingClientRect();
-    const x1 = lr.right - wr.left, y1 = lr.top + lr.height/2 - wr.top;
-    const x2 = rr.left - wr.left, y2 = rr.top + rr.height/2 - wr.top;
-    
+    const lr = le.getBoundingClientRect(), rr = re.getBoundingClientRect(), x1 = lr.right - wr.left, y1 = lr.top + lr.height/2 - wr.top, x2 = rr.left - wr.left, y2 = rr.top + rr.height/2 - wr.top;
     const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1',x1); line.setAttribute('y1',y1);
-    line.setAttribute('x2',x2); line.setAttribute('y2',y2);
-    line.setAttribute('stroke', le.dataset.color || PAIR_COLORS[i % PAIR_COLORS.length]);
-    line.setAttribute('stroke-width','3'); line.setAttribute('stroke-linecap','round'); line.setAttribute('stroke-dasharray','6,3');
+    line.setAttribute('x1',x1); line.setAttribute('y1',y1); line.setAttribute('x2',x2); line.setAttribute('y2',y2);
+    line.setAttribute('stroke', le.dataset.color || PAIR_COLORS[i % PAIR_COLORS.length]); line.setAttribute('stroke-width','3'); line.setAttribute('stroke-linecap','round'); line.setAttribute('stroke-dasharray','6,3');
     svg.appendChild(line);
   });
 }
 function resetMatch() {
   document.querySelectorAll('.match-item').forEach(b => { b.style.background=''; b.style.borderColor=''; delete b.dataset.color; b.classList.remove('sel-left'); });
-  document.getElementById('match-svg').innerHTML = '';
-  state.ex2 = {}; matchPending = null; saveState();
+  document.getElementById('match-svg').innerHTML = ''; state.ex2 = {}; matchPending = null; saveState();
 }
 window.addEventListener('resize', () => { if(Object.keys(state.ex2).length) drawAllMatchLines(); });
 
@@ -906,55 +848,39 @@ function initEx3() {
   const bank = document.getElementById('wb3'), sentsDiv = document.getElementById('ex3-sents');
   bank.innerHTML = ''; sentsDiv.innerHTML = '';
   const usedWords = Object.values(state.ex3);
-  
   EX3_BANK_WORDS.filter(w => !usedWords.includes(w)).forEach(w => bank.appendChild(makeChip(w, '3', 'chip-'+w, 'wb3')));
 
   EX3_SENTS.forEach(sent => {
     const p = document.createElement('div'); p.className = 'fill-sent';
-    const blank = document.createElement('span'); blank.className = 'drop-blank';
-    blank.dataset.droptarget = sent.id; blank.dataset.blankId = sent.id;
-    
-    if (state.ex3[sent.id]) { blank.textContent = state.ex3[sent.id]; blank.classList.add('filled'); } 
-    else { blank.textContent = '___'; }
-
+    const blank = document.createElement('span'); blank.className = 'drop-blank'; blank.dataset.droptarget = sent.id; blank.dataset.blankId = sent.id;
+    if (state.ex3[sent.id]) { blank.textContent = state.ex3[sent.id]; blank.classList.add('filled'); } else { blank.textContent = '___'; }
     blank.addEventListener('click', () => {
       if (!blank.classList.contains('filled')) return;
       const word = state.ex3[sent.id]; delete state.ex3[sent.id];
       blank.textContent = '___'; blank.classList.remove('filled');
-      document.getElementById('wb3').appendChild(makeChip(word, '3', 'chip-'+word, 'wb3'));
-      saveState();
+      document.getElementById('wb3').appendChild(makeChip(word, '3', 'chip-'+word, 'wb3')); saveState();
     });
     p.appendChild(document.createTextNode(sent.pre + ' ')); p.appendChild(blank); p.appendChild(document.createTextNode(' ' + sent.post));
     sentsDiv.appendChild(p);
   });
 }
 function makeChip(word, group, id, bankId) {
-  const chip = document.createElement('div'); chip.className = 'd-chip';
-  chip.textContent = word; chip.dataset.word = word; chip.dataset.bankId = bankId;
+  const chip = document.createElement('div'); chip.className = 'd-chip'; chip.textContent = word; chip.dataset.word = word; chip.dataset.bankId = bankId;
   makeDraggable(chip, group, id); return chip;
 }
 function dropEx3(srcEl, target, id) {
   const word = srcEl.dataset.word;
   if (target.dataset.bank === '3') {
     const oldBlank = Object.keys(state.ex3).find(k => state.ex3[k] === word);
-    if (oldBlank) {
-      delete state.ex3[oldBlank];
-      const bEl = document.querySelector(`[data-blank-id="${oldBlank}"]`);
-      if (bEl) { bEl.textContent = '___'; bEl.classList.remove('filled'); }
-    }
+    if (oldBlank) { delete state.ex3[oldBlank]; const bEl = document.querySelector(`[data-blank-id="${oldBlank}"]`); if (bEl) { bEl.textContent = '___'; bEl.classList.remove('filled'); } }
     if (!document.querySelector(`#wb3 [data-word="${word}"]`)) document.getElementById('wb3').appendChild(makeChip(word, '3', 'chip-'+word, 'wb3'));
     srcEl.remove(); saveState(); return;
   }
   const blankId = target.dataset.droptarget; if (!blankId) return;
-  
   if (state.ex3[blankId]) document.getElementById('wb3').appendChild(makeChip(state.ex3[blankId], '3', 'chip-'+state.ex3[blankId], 'wb3'));
   
   const oldBlank = Object.keys(state.ex3).find(k => state.ex3[k] === word);
-  if (oldBlank && oldBlank !== blankId) {
-    delete state.ex3[oldBlank];
-    const bEl = document.querySelector(`[data-blank-id="${oldBlank}"]`);
-    if (bEl) { bEl.textContent = '___'; bEl.classList.remove('filled'); }
-  }
+  if (oldBlank && oldBlank !== blankId) { delete state.ex3[oldBlank]; const bEl = document.querySelector(`[data-blank-id="${oldBlank}"]`); if (bEl) { bEl.textContent = '___'; bEl.classList.remove('filled'); } }
 
   state.ex3[blankId] = word; target.textContent = word; target.classList.add('filled');
   srcEl.remove(); saveState();
@@ -968,7 +894,6 @@ const EX4_WORDS = [
   { clue: 'Número: 15', answer: 'FIFTEEN', scrambled: ['N','E','T','F','I','E','F'] },
   { clue: 'Número: 20', answer: 'TWENTY', scrambled: ['N','T','W','E','T','Y'] }
 ];
-
 function initEx4() {
   if (!state.ex4 || typeof state.ex4 !== 'object') state.ex4 = {};
   const container = document.getElementById('scr-items'); container.innerHTML = '';
@@ -977,41 +902,28 @@ function initEx4() {
     div.innerHTML = `<div class="scr-hint"><span>${item.clue}</span> — Ordena las letras:</div><div class="tile-pool" id="pool-${idx}"></div><div class="tile-ans" id="ans-${idx}"></div><div class="scr-actions"><button class="btn-check" onclick="checkScramble(${idx})">✓ Verificar</button><button class="btn-clear" onclick="clearScramble(${idx})">✕ Limpiar</button><span class="scr-result" id="scr-res-${idx}"></span></div>`;
     container.appendChild(div);
 
-    const currentAns = state.ex4[idx] || [];
-    const usedIndices = currentAns.map(obj => obj.srcIdx);
-
+    const currentAns = state.ex4[idx] || [], usedIndices = currentAns.map(obj => obj.srcIdx);
     item.scrambled.forEach((letter, si) => {
-      const tile = document.createElement('div');
-      tile.className = 'l-tile' + (usedIndices.includes(si) ? ' used' : ''); tile.textContent = letter; tile.dataset.si = si;
-      tile.addEventListener('click', () => addLetter(idx, si, letter, tile));
-      document.getElementById('pool-' + idx).appendChild(tile);
+      const tile = document.createElement('div'); tile.className = 'l-tile' + (usedIndices.includes(si) ? ' used' : ''); tile.textContent = letter; tile.dataset.si = si;
+      tile.addEventListener('click', () => addLetter(idx, si, letter, tile)); document.getElementById('pool-' + idx).appendChild(tile);
     });
-
     currentAns.forEach(obj => {
-      const ansTile = document.createElement('div');
-      ansTile.className = 'l-tile'; ansTile.textContent = obj.letter; ansTile.dataset.si = obj.srcIdx;
-      ansTile.addEventListener('click', () => removeLetter(idx, obj.srcIdx, ansTile));
-      document.getElementById('ans-' + idx).appendChild(ansTile);
+      const ansTile = document.createElement('div'); ansTile.className = 'l-tile'; ansTile.textContent = obj.letter; ansTile.dataset.si = obj.srcIdx;
+      ansTile.addEventListener('click', () => removeLetter(idx, obj.srcIdx, ansTile)); document.getElementById('ans-' + idx).appendChild(ansTile);
     });
     if (state.ex4[idx] && state.ex4[idx].length === item.answer.length) checkScramble(idx, true);
   });
 }
 function addLetter(idx, si, letter, tile) {
   if (!state.ex4[idx]) state.ex4[idx] = [];
-  state.ex4[idx].push({ letter, srcIdx: si });
-  tile.classList.add('used');
-  const ansTile = document.createElement('div');
-  ansTile.className = 'l-tile'; ansTile.textContent = letter; ansTile.dataset.si = si;
-  ansTile.addEventListener('click', () => removeLetter(idx, si, ansTile));
-  document.getElementById('ans-' + idx).appendChild(ansTile);
-  document.getElementById('scr-res-' + idx).textContent = '';
-  saveState();
+  state.ex4[idx].push({ letter, srcIdx: si }); tile.classList.add('used');
+  const ansTile = document.createElement('div'); ansTile.className = 'l-tile'; ansTile.textContent = letter; ansTile.dataset.si = si;
+  ansTile.addEventListener('click', () => removeLetter(idx, si, ansTile)); document.getElementById('ans-' + idx).appendChild(ansTile);
+  document.getElementById('scr-res-' + idx).textContent = ''; saveState();
 }
 function removeLetter(idx, si, ansTile) {
-  state.ex4[idx] = (state.ex4[idx] || []).filter(o => o.srcIdx !== si);
-  ansTile.remove();
-  const poolTile = document.querySelector(`#pool-${idx} .l-tile[data-si="${si}"]`);
-  if (poolTile) poolTile.classList.remove('used');
+  state.ex4[idx] = (state.ex4[idx] || []).filter(o => o.srcIdx !== si); ansTile.remove();
+  const poolTile = document.querySelector(`#pool-${idx} .l-tile[data-si="${si}"]`); if (poolTile) poolTile.classList.remove('used');
   document.getElementById('scr-res-' + idx).textContent = ''; saveState();
 }
 function clearScramble(idx) {
@@ -1027,34 +939,21 @@ function checkScramble(idx, silent) {
   updateProgress();
 }
 
-/* --- EJ 5: EMOJI COUNT --- */
-const EX5_QS = [
-  { emojis:'🍎', count:13, choices:['eleven','twelve','thirteen','fourteen'], ans:'thirteen' },
-  { emojis:'🌟', count:17, choices:['fifteen','sixteen','seventeen','eighteen'], ans:'seventeen' },
-  { emojis:'🐱', count:11, choices:['nine','ten','eleven','twelve'], ans:'eleven' },
-  { emojis:'🎈', count:20, choices:['eighteen','nineteen','twenty','none'], ans:'twenty' },
-  { emojis:'🦋', count:16, choices:['fourteen','fifteen','sixteen','seventeen'], ans:'sixteen' }
-];
+/* --- EJ 5, 6, 7, 8, 9, 10... --- */
+const EX5_QS = [ { emojis:'🍎', count:13, choices:['eleven','twelve','thirteen','fourteen'], ans:'thirteen' }, { emojis:'🌟', count:17, choices:['fifteen','sixteen','seventeen','eighteen'], ans:'seventeen' }, { emojis:'🐱', count:11, choices:['nine','ten','eleven','twelve'], ans:'eleven' }, { emojis:'🎈', count:20, choices:['eighteen','nineteen','twenty','none'], ans:'twenty' }, { emojis:'🦋', count:16, choices:['fourteen','fifteen','sixteen','seventeen'], ans:'sixteen' } ];
 function initEx5() {
   const list = document.getElementById('cq-list'); list.innerHTML = '';
   EX5_QS.forEach((q, i) => {
     const div = document.createElement('div'); div.className = 'cq-item';
     div.innerHTML = `<div class="cq-emojis">${q.emojis.repeat(q.count)}</div><div class="cq-label">How many? — ¿Cuántos hay?</div><div class="cq-choices" id="cq-choices-${i}"></div>`;
-    list.appendChild(div);
-    const choicesDiv = div.querySelector('.cq-choices');
+    list.appendChild(div); const choicesDiv = div.querySelector('.cq-choices');
     q.choices.forEach(choice => {
       const btn = document.createElement('button'); btn.className = 'cho-btn'; btn.textContent = choice;
-      if (state.ex5[i] === choice) {
-        btn.classList.add(choice === q.ans ? 'correct' : 'wrong');
-        if (choice !== q.ans) btn.classList.add('sel');
-      }
+      if (state.ex5[i] === choice) { btn.classList.add(choice === q.ans ? 'correct' : 'wrong'); if (choice !== q.ans) btn.classList.add('sel'); }
       btn.addEventListener('click', () => {
         choicesDiv.querySelectorAll('.cho-btn').forEach(b => b.classList.remove('sel','correct','wrong'));
         btn.classList.add('sel'); state.ex5[i] = choice;
-        choicesDiv.querySelectorAll('.cho-btn').forEach(b => {
-          if (b.textContent === q.ans) b.classList.add('correct');
-          else if (b.classList.contains('sel')) b.classList.add('wrong');
-        });
+        choicesDiv.querySelectorAll('.cho-btn').forEach(b => { if (b.textContent === q.ans) b.classList.add('correct'); else if (b.classList.contains('sel')) b.classList.add('wrong'); });
         saveState();
       });
       choicesDiv.appendChild(btn);
@@ -1062,14 +961,7 @@ function initEx5() {
   });
 }
 
-/* --- EJ 6: TRUE/FALSE --- */
-const EX6_QS = [
-  { stmt: '"EIGHT" comes before "NINE" in counting.', ans: 'true' },
-  { stmt: '"TWELVE" is an odd number.', ans: 'false' },
-  { stmt: '"TWENTY" is the largest number from 0 to 20.', ans: 'true' },
-  { stmt: '"ELEVEN" comes after "TWELVE" when counting.', ans: 'false' },
-  { stmt: '"FIFTEEN" has exactly six (6) letters.', ans: 'false' }
-];
+const EX6_QS = [ { stmt: '"EIGHT" comes before "NINE" in counting.', ans: 'true' }, { stmt: '"TWELVE" is an odd number.', ans: 'false' }, { stmt: '"TWENTY" is the largest number from 0 to 20.', ans: 'true' }, { stmt: '"ELEVEN" comes after "TWELVE" when counting.', ans: 'false' }, { stmt: '"FIFTEEN" has exactly six (6) letters.', ans: 'false' } ];
 function initEx6() {
   const list = document.getElementById('tf-list'); list.innerHTML = '';
   EX6_QS.forEach((q, i) => {
@@ -1078,105 +970,50 @@ function initEx6() {
     list.appendChild(div);
   });
 }
-function selectTF(i, val, btn) {
-  const item = btn.closest('.tf-item');
-  item.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('sel'));
-  btn.classList.add('sel'); state.ex6[i] = val; saveState();
-}
+function selectTF(i, val, btn) { const item = btn.closest('.tf-item'); item.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); state.ex6[i] = val; saveState(); }
 
-/* --- EJ 7: DROPDOWN --- */
-const EX7_QS = [
-  { pre:'A soccer team has', post:'players on the field.', opts:['ten','eleven','twelve'], ans:'eleven' },
-  { pre:'One dozen means', post:'items.', opts:['eleven','twelve','thirteen'], ans:'twelve' },
-  { pre:'I have', post:'toes on my feet.', opts:['eight','nine','ten'], ans:'ten' },
-  { pre:"Valentine's Day is on February", post:'.', opts:['thirteen','fourteen','fifteen'], ans:'fourteen' },
-  { pre:'The number before twenty is', post:'.', opts:['seventeen','eighteen','nineteen'], ans:'nineteen' }
-];
+const EX7_QS = [ { pre:'A soccer team has', post:'players on the field.', opts:['ten','eleven','twelve'], ans:'eleven' }, { pre:'One dozen means', post:'items.', opts:['eleven','twelve','thirteen'], ans:'twelve' }, { pre:'I have', post:'toes on my feet.', opts:['eight','nine','ten'], ans:'ten' }, { pre:"Valentine's Day is on February", post:'.', opts:['thirteen','fourteen','fifteen'], ans:'fourteen' }, { pre:'The number before twenty is', post:'.', opts:['seventeen','eighteen','nineteen'], ans:'nineteen' } ];
 function initEx7() {
   const list = document.getElementById('dd-list'); list.innerHTML = '';
   EX7_QS.forEach((q, i) => {
-    const p = document.createElement('div'); p.className = 'dd-sent';
-    const sel = document.createElement('select'); sel.className = 'dd-select';
+    const p = document.createElement('div'); p.className = 'dd-sent'; const sel = document.createElement('select'); sel.className = 'dd-select';
     sel.innerHTML = `<option value="">— choose —</option>` + q.opts.map(o => `<option value="${o}" ${state.ex7[i]===o?'selected':''}>${o}</option>`).join('');
     sel.addEventListener('change', () => { state.ex7[i] = sel.value; saveState(); });
-    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `)); p.appendChild(sel); p.appendChild(document.createTextNode(` ${q.post}`));
-    list.appendChild(p);
+    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `)); p.appendChild(sel); p.appendChild(document.createTextNode(` ${q.post}`)); list.appendChild(p);
   });
 }
 
-/* --- EJ 8: CLASIFICAR EVEN/ODD (CORREGIDO) --- */
-const EX8_NUMBERS = [4, 7, 10, 13, 16, 19, 2, 15];
-const EX8_EVEN = [4, 10, 16, 2], EX8_ODD  = [7, 13, 19, 15];
-
+const EX8_NUMBERS = [4, 7, 10, 13, 16, 19, 2, 15], EX8_EVEN = [4, 10, 16, 2], EX8_ODD  = [7, 13, 19, 15];
 function initEx8() {
   if (!state.ex8 || !state.ex8.bank) state.ex8 = { bank: [...EX8_NUMBERS], even: [], odd: [] };
   const bank = document.getElementById('eo-bank'), evenDrop = document.getElementById('eo-even'), oddDrop = document.getElementById('eo-odd');
   bank.innerHTML = ''; evenDrop.innerHTML = ''; oddDrop.innerHTML = '';
-
-  function makeNumChip(n) {
-    const chip = document.createElement('div');
-    chip.className = 'n-chip'; chip.textContent = n; chip.dataset.num = n;
-    makeDraggable(chip, '8', 'num-' + n); return chip;
-  }
-  state.ex8.bank.forEach(n => bank.appendChild(makeNumChip(n)));
-  state.ex8.even.forEach(n => evenDrop.appendChild(makeNumChip(n)));
-  state.ex8.odd.forEach(n => oddDrop.appendChild(makeNumChip(n)));
+  function makeNumChip(n) { const chip = document.createElement('div'); chip.className = 'n-chip'; chip.textContent = n; chip.dataset.num = n; makeDraggable(chip, '8', 'num-' + n); return chip; }
+  state.ex8.bank.forEach(n => bank.appendChild(makeNumChip(n))); state.ex8.even.forEach(n => evenDrop.appendChild(makeNumChip(n))); state.ex8.odd.forEach(n => oddDrop.appendChild(makeNumChip(n)));
 }
 function dropEx8(srcEl, target, id) {
   const num = parseInt(srcEl.dataset.num), targetId = target.dataset.target;
-  // Quitar del estado anterior
   ['bank','even','odd'].forEach(k => { state.ex8[k] = (state.ex8[k] || []).filter(n => n !== num); });
-
-  if (targetId === 'even') state.ex8.even.push(num);
-  else if (targetId === 'odd') state.ex8.odd.push(num);
-  else state.ex8.bank.push(num);
-
+  if (targetId === 'even') state.ex8.even.push(num); else if (targetId === 'odd') state.ex8.odd.push(num); else state.ex8.bank.push(num);
   srcEl.remove();
   const container = targetId === 'even' ? document.getElementById('eo-even') : targetId === 'odd' ? document.getElementById('eo-odd') : document.getElementById('eo-bank');
-  
-  const newChip = document.createElement('div');
-  newChip.className = 'n-chip'; newChip.textContent = num; newChip.dataset.num = num;
-  makeDraggable(newChip, '8', 'num-' + num);
-  container.appendChild(newChip);
-  saveState();
+  const newChip = document.createElement('div'); newChip.className = 'n-chip'; newChip.textContent = num; newChip.dataset.num = num; makeDraggable(newChip, '8', 'num-' + num);
+  container.appendChild(newChip); saveState();
 }
 
-/* --- EJ 9: EMOJI MATCH (CORREGIDO Y RESPONSIVO) --- */
-const EX9_TARGETS = [
-  { id:'t1', emoji:'🎂', count:11, ans:'ELEVEN' },
-  { id:'t2', emoji:'⭐', count:14, ans:'FOURTEEN' },
-  { id:'t3', emoji:'🍕', count:17, ans:'SEVENTEEN' },
-  { id:'t4', emoji:'🎮', count:18, ans:'EIGHTEEN' },
-  { id:'t5', emoji:'🌺', count:20, ans:'TWENTY' }
-];
+const EX9_TARGETS = [ { id:'t1', emoji:'🎂', count:11, ans:'ELEVEN' }, { id:'t2', emoji:'⭐', count:14, ans:'FOURTEEN' }, { id:'t3', emoji:'🍕', count:17, ans:'SEVENTEEN' }, { id:'t4', emoji:'🎮', count:18, ans:'EIGHTEEN' }, { id:'t5', emoji:'🌺', count:20, ans:'TWENTY' } ];
 function initEx9() {
-  const bank = document.getElementById('em-bank'), targets = document.getElementById('em-targets');
-  bank.innerHTML = ''; targets.innerHTML = '';
+  const bank = document.getElementById('em-bank'), targets = document.getElementById('em-targets'); bank.innerHTML = ''; targets.innerHTML = '';
   const usedWords = Object.values(state.ex9);
-  
-  EX9_TARGETS.map(t => t.ans).filter(w => !usedWords.includes(w)).forEach(w => {
-    bank.appendChild(makeChip(w, '9', 'emchip-' + w, 'em-bank'));
-  });
-
+  EX9_TARGETS.map(t => t.ans).filter(w => !usedWords.includes(w)).forEach(w => { bank.appendChild(makeChip(w, '9', 'emchip-' + w, 'em-bank')); });
   EX9_TARGETS.forEach(t => {
-    const div = document.createElement('div');
-    div.className = 'em-target' + (state.ex9[t.id] ? ' filled' : '');
-    div.dataset.droptarget = t.id; div.dataset.targetId = t.id;
+    const div = document.createElement('div'); div.className = 'em-target' + (state.ex9[t.id] ? ' filled' : ''); div.dataset.droptarget = t.id; div.dataset.targetId = t.id;
     div.innerHTML = `<div class="em-emojis">${t.emoji.repeat(t.count)}</div><div class="em-cnt">(${t.count})</div><div class="em-slot" id="em-slot-${t.id}"></div>`;
-    
-    if (state.ex9[t.id]) {
-      const chip = makeChip(state.ex9[t.id], '9', 'emchip-' + state.ex9[t.id], 'em-bank');
-      chip.style.margin = '0';
-      div.querySelector('.em-slot').appendChild(chip);
-    }
-    
+    if (state.ex9[t.id]) { const chip = makeChip(state.ex9[t.id], '9', 'emchip-' + state.ex9[t.id], 'em-bank'); chip.style.margin = '0'; div.querySelector('.em-slot').appendChild(chip); }
     div.addEventListener('click', (e) => {
       if (!div.classList.contains('filled')) return;
-      const w = state.ex9[t.id]; if (!w) return;
-      delete state.ex9[t.id];
-      div.querySelector('.em-slot').innerHTML = ''; div.classList.remove('filled');
-      document.getElementById('em-bank').appendChild(makeChip(w, '9', 'emchip-' + w, 'em-bank'));
-      saveState();
+      const w = state.ex9[t.id]; if (!w) return; delete state.ex9[t.id]; div.querySelector('.em-slot').innerHTML = ''; div.classList.remove('filled');
+      document.getElementById('em-bank').appendChild(makeChip(w, '9', 'emchip-' + w, 'em-bank')); saveState();
     });
     targets.appendChild(div);
   });
@@ -1185,69 +1022,30 @@ function dropEx9(srcEl, target, id) {
   const word = srcEl.dataset.word;
   if (target.dataset.bank === '9') {
     const oldTarget = Object.keys(state.ex9).find(k => state.ex9[k] === word);
-    if (oldTarget) {
-      delete state.ex9[oldTarget];
-      document.getElementById('em-slot-' + oldTarget).innerHTML = '';
-      document.querySelector(`[data-target-id="${oldTarget}"]`).classList.remove('filled');
-    }
-    document.getElementById('em-bank').appendChild(makeChip(word, '9', 'emchip-' + word, 'em-bank'));
-    srcEl.remove(); saveState(); return;
+    if (oldTarget) { delete state.ex9[oldTarget]; document.getElementById('em-slot-' + oldTarget).innerHTML = ''; document.querySelector(`[data-target-id="${oldTarget}"]`).classList.remove('filled'); }
+    document.getElementById('em-bank').appendChild(makeChip(word, '9', 'emchip-' + word, 'em-bank')); srcEl.remove(); saveState(); return;
   }
-  const tid = target.dataset.droptarget || target.dataset.targetId;
-  if (!tid) return;
-
+  const tid = target.dataset.droptarget || target.dataset.targetId; if (!tid) return;
   if (state.ex9[tid]) document.getElementById('em-bank').appendChild(makeChip(state.ex9[tid], '9', 'emchip-' + state.ex9[tid], 'em-bank'));
-
   const oldTid = Object.keys(state.ex9).find(k => state.ex9[k] === word);
-  if (oldTid && oldTid !== tid) {
-    delete state.ex9[oldTid];
-    document.getElementById('em-slot-' + oldTid).innerHTML = '';
-    document.querySelector(`[data-target-id="${oldTid}"]`).classList.remove('filled');
-  }
-
-  state.ex9[tid] = word;
-  const slot = document.getElementById('em-slot-' + tid);
-  if (slot) {
-    slot.innerHTML = '';
-    const chip = makeChip(word, '9', 'emchip-' + word, 'em-bank'); chip.style.margin = '0';
-    slot.appendChild(chip);
-  }
-  (target.closest('.em-target') || target).classList.add('filled');
-  srcEl.remove(); saveState();
+  if (oldTid && oldTid !== tid) { delete state.ex9[oldTid]; document.getElementById('em-slot-' + oldTid).innerHTML = ''; document.querySelector(`[data-target-id="${oldTid}"]`).classList.remove('filled'); }
+  state.ex9[tid] = word; const slot = document.getElementById('em-slot-' + tid);
+  if (slot) { slot.innerHTML = ''; const chip = makeChip(word, '9', 'emchip-' + word, 'em-bank'); chip.style.margin = '0'; slot.appendChild(chip); }
+  (target.closest('.em-target') || target).classList.add('filled'); srcEl.remove(); saveState();
 }
 
-/* --- EJ 10: COMPLETAR ESCRIBIENDO (CORREGIDO) --- */
-const EX10_QS = [
-  { pre:'The number after nineteen is', post:'.', ans:'twenty' },
-  { pre:'Five plus three equals', post:'.', ans:'eight' },
-  { pre:'Ten plus six equals', post:'.', ans:'sixteen' },
-  { pre:'Two times seven is', post:'.', ans:'fourteen' },
-  { pre:'Three times four is', post:'.', ans:'twelve' }
-];
+const EX10_QS = [ { pre:'The number after nineteen is', post:'.', ans:'twenty' }, { pre:'Five plus three equals', post:'.', ans:'eight' }, { pre:'Ten plus six equals', post:'.', ans:'sixteen' }, { pre:'Two times seven is', post:'.', ans:'fourteen' }, { pre:'Three times four is', post:'.', ans:'twelve' } ];
 function initEx10() {
   const list = document.getElementById('fib-list'); list.innerHTML = '';
   EX10_QS.forEach((q, i) => {
-    const p = document.createElement('div'); p.className = 'fib-sent';
-    const inp = document.createElement('input');
-    inp.type = 'text'; inp.className = 'fib-input'; inp.placeholder = 'write here…';
-    inp.value = state.ex10[i] || ''; inp.dataset.idx = i;
-
+    const p = document.createElement('div'); p.className = 'fib-sent'; const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'fib-input'; inp.placeholder = 'write here…'; inp.value = state.ex10[i] || ''; inp.dataset.idx = i;
     const checkInput = () => {
-      const val = inp.value.trim().toLowerCase().replace(/\s+/g,' ');
-      state.ex10[i] = inp.value;
-      if (val === q.ans) { inp.classList.remove('nok-in'); inp.classList.add('ok-in'); }
-      else if (val.length > 0) { inp.classList.remove('ok-in'); inp.classList.add('nok-in'); }
-      else { inp.classList.remove('ok-in','nok-in'); }
+      const val = inp.value.trim().toLowerCase().replace(/\s+/g,' '); state.ex10[i] = inp.value;
+      if (val === q.ans) { inp.classList.remove('nok-in'); inp.classList.add('ok-in'); } else if (val.length > 0) { inp.classList.remove('ok-in'); inp.classList.add('nok-in'); } else { inp.classList.remove('ok-in','nok-in'); }
       saveState();
     };
-
-    if (inp.value) checkInput();
-    inp.addEventListener('input', checkInput);
-
-    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `));
-    p.appendChild(inp);
-    p.appendChild(document.createTextNode(` ${q.post}`));
-    list.appendChild(p);
+    if (inp.value) checkInput(); inp.addEventListener('input', checkInput);
+    p.appendChild(document.createTextNode(`${i+1}. ${q.pre} `)); p.appendChild(inp); p.appendChild(document.createTextNode(` ${q.post}`)); list.appendChild(p);
   });
 }
 
@@ -1257,82 +1055,50 @@ function calculateScore() {
   const [ex1m,ex2m,ex3m,ex4m,ex5m,ex6m,ex7m,ex8m,ex9m,ex10m] = [8,5,5,5,5,5,5,8,5,5];
 
   Object.keys(MATCH_CORRECT).forEach(k => { if (state.ex2[k] === MATCH_CORRECT[k]) ex2s++; });
-  const ex3ans = { b1:'FIVE', b2:'SEVEN', b3:'TWELVE', b4:'THREE', b5:'TWO' };
-  Object.keys(ex3ans).forEach(k => { if (state.ex3[k] === ex3ans[k]) ex3s++; });
+  const ex3ans = { b1:'FIVE', b2:'SEVEN', b3:'TWELVE', b4:'THREE', b5:'TWO' }; Object.keys(ex3ans).forEach(k => { if (state.ex3[k] === ex3ans[k]) ex3s++; });
   EX4_WORDS.forEach((item, idx) => { if ((state.ex4[idx]||[]).map(o=>o.letter).join('') === item.answer) ex4s++; });
-  EX5_QS.forEach((q, i) => { if (state.ex5[i] === q.ans) ex5s++; });
-  EX6_QS.forEach((q, i) => { if (state.ex6[i] === q.ans) ex6s++; });
-  EX7_QS.forEach((q, i) => { if (state.ex7[i] === q.ans) ex7s++; });
-  (state.ex8.even || []).forEach(n => { if (EX8_EVEN.includes(n)) ex8s++; });
-  (state.ex8.odd  || []).forEach(n => { if (EX8_ODD.includes(n))  ex8s++; });
-  EX9_TARGETS.forEach(t => { if (state.ex9[t.id] === t.ans) ex9s++; });
-  EX10_QS.forEach((q, i) => { if ((state.ex10[i]||'').trim().toLowerCase().replace(/\s+/g,' ') === q.ans) ex10s++; });
+  EX5_QS.forEach((q, i) => { if (state.ex5[i] === q.ans) ex5s++; }); EX6_QS.forEach((q, i) => { if (state.ex6[i] === q.ans) ex6s++; }); EX7_QS.forEach((q, i) => { if (state.ex7[i] === q.ans) ex7s++; });
+  (state.ex8.even || []).forEach(n => { if (EX8_EVEN.includes(n)) ex8s++; }); (state.ex8.odd  || []).forEach(n => { if (EX8_ODD.includes(n))  ex8s++; });
+  EX9_TARGETS.forEach(t => { if (state.ex9[t.id] === t.ans) ex9s++; }); EX10_QS.forEach((q, i) => { if ((state.ex10[i]||'').trim().toLowerCase().replace(/\s+/g,' ') === q.ans) ex10s++; });
 
-  const total = ex1s+ex2s+ex3s+ex4s+ex5s+ex6s+ex7s+ex8s+ex9s+ex10s;
-  const maxTotal = ex1m+ex2m+ex3m+ex4m+ex5m+ex6m+ex7m+ex8m+ex9m+ex10m;
-  const grade = total === 0 ? 1 : Math.max(1, Math.round((total/maxTotal)*10*10)/10);
-
-  return {
-    scores: [
-      { name:'Ej.1 Sopa de Letras', got:ex1s, max:ex1m },
-      { name:'Ej.2 Unir Líneas', got:ex2s, max:ex2m },
-      { name:'Ej.3 Completar', got:ex3s, max:ex3m },
-      { name:'Ej.4 Unscramble', got:ex4s, max:ex4m },
-      { name:'Ej.5 Contar', got:ex5s, max:ex5m },
-      { name:'Ej.6 True/False', got:ex6s, max:ex6m },
-      { name:'Ej.7 Dropdown', got:ex7s, max:ex7m },
-      { name:'Ej.8 Par/Impar', got:ex8s, max:ex8m },
-      { name:'Ej.9 Emoji Match', got:ex9s, max:ex9m },
-      { name:'Ej.10 Escribir', got:ex10s,max:ex10m }
-    ], total, maxTotal, grade
-  };
+  const total = ex1s+ex2s+ex3s+ex4s+ex5s+ex6s+ex7s+ex8s+ex9s+ex10s, maxTotal = ex1m+ex2m+ex3m+ex4m+ex5m+ex6m+ex7m+ex8m+ex9m+ex10m, grade = total === 0 ? 1 : Math.max(1, Math.round((total/maxTotal)*10*10)/10);
+  return { scores: [ { name:'Ej.1 Sopa de Letras', got:ex1s, max:ex1m }, { name:'Ej.2 Unir Líneas', got:ex2s, max:ex2m }, { name:'Ej.3 Completar', got:ex3s, max:ex3m }, { name:'Ej.4 Unscramble', got:ex4s, max:ex4m }, { name:'Ej.5 Contar', got:ex5s, max:ex5m }, { name:'Ej.6 True/False', got:ex6s, max:ex6m }, { name:'Ej.7 Dropdown', got:ex7s, max:ex7m }, { name:'Ej.8 Par/Impar', got:ex8s, max:ex8m }, { name:'Ej.9 Emoji Match', got:ex9s, max:ex9m }, { name:'Ej.10 Escribir', got:ex10s,max:ex10m } ], total, maxTotal, grade };
 }
 
 function generatePDF() {
-  const name = document.getElementById('inp-name').value.trim();
-  const nie  = document.getElementById('inp-nie').value.trim();
+  const name = document.getElementById('inp-name').value.trim(), nie = document.getElementById('inp-nie').value.trim();
   if (!name || !nie) { showToast('⚠️ Por favor ingresa tu Nombre y NIE primero'); return; }
 
   const score = calculateScore();
-  document.getElementById('pdf-name').textContent = name;
-  document.getElementById('pdf-nie').textContent  = nie;
-  const now = new Date();
-  document.getElementById('pdf-date').textContent = now.toLocaleDateString('es-SV') + ' ' + now.toLocaleTimeString('es-SV');
+  document.getElementById('pdf-name').textContent = name; document.getElementById('pdf-nie').textContent  = nie;
+  const now = new Date(); document.getElementById('pdf-date').textContent = now.toLocaleDateString('es-SV') + ' ' + now.toLocaleTimeString('es-SV');
 
   const grid = document.getElementById('pdf-scores'); grid.innerHTML = '';
   score.scores.forEach(s => {
-    const pct = Math.round((s.got/s.max)*100);
-    const color = pct >= 70 ? '#16A34A' : pct >= 50 ? '#D97706' : '#DC2626';
+    const pct = Math.round((s.got/s.max)*100), color = pct >= 70 ? '#16A34A' : pct >= 50 ? '#D97706' : '#DC2626';
     grid.innerHTML += `<div class="pdf-row"><span class="pdf-rn">${s.name}</span><span class="pdf-rv" style="color:${color}">${s.got}/${s.max}</span></div>`;
   });
 
   document.getElementById('pdf-total-str').textContent = `${score.total} / ${score.maxTotal} puntos`;
-  
-  // ANTI-TRAMPA: Insertar nota final solo en el PDF, en un rincón discreto
   document.getElementById('pdf-grade-footer').innerHTML = `Final Grade: <strong>${score.grade}/10</strong> &nbsp;·&nbsp; Total: ${score.total}/${score.maxTotal} &nbsp;·&nbsp; ID: ${nie}`;
 
-  document.getElementById('pdf-loading').style.display = 'flex';
-  document.getElementById('pdf-btn').disabled = true;
+  document.getElementById('pdf-loading').style.display = 'flex'; document.getElementById('pdf-btn').disabled = true;
 
   const el = document.getElementById('pdf-wrap');
-  el.style.display = 'block';
 
+  // html2pdf renderiza sobre el elemento, que al estar en -9999px será capturado perfectamente
   html2pdf().set({
     margin: [10, 10, 10, 10],
     filename: `COEDUCA_Examen_${name.replace(/\s+/g,'_')}.pdf`,
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+    html2canvas: { scale: 2, useCORS: true, letterRendering: true, windowWidth: 800 },
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   }).from(el).save().then(() => {
-    el.style.display = 'none';
-    document.getElementById('pdf-loading').style.display = 'none';
-    document.getElementById('pdf-btn').disabled = false;
+    document.getElementById('pdf-loading').style.display = 'none'; document.getElementById('pdf-btn').disabled = false;
     showToast('✅ PDF descargado correctamente');
   }).catch(err => {
     console.error(err);
-    el.style.display = 'none';
-    document.getElementById('pdf-loading').style.display = 'none';
-    document.getElementById('pdf-btn').disabled = false;
+    document.getElementById('pdf-loading').style.display = 'none'; document.getElementById('pdf-btn').disabled = false;
     showToast('❌ Ocurrió un error al generar el PDF.');
   });
 }
