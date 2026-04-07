@@ -1380,76 +1380,84 @@ function calculateScore(){
 }
 
 /* ============================================================
-   PDF GENERATION — FIXED
+   PDF GENERATION — FIXED (Evita recortes en móviles)
    ============================================================ */
 function generatePDF(){
-  const name=document.getElementById('inp-name').value.trim();
-  const nie=document.getElementById('inp-nie').value.trim();
-  if(!name||!nie){showToast('⚠️ Ingresa tu Nombre y NIE primero');return;}
+  const name = document.getElementById('inp-name').value.trim();
+  const nie = document.getElementById('inp-nie').value.trim();
+  
+  if (!name || !nie) {
+    showToast('⚠️ Ingresa tu Nombre y NIE primero');
+    return;
+  }
 
-  const score=calculateScore();
-  document.getElementById('pdf-name').textContent=name;
-  document.getElementById('pdf-nie').textContent=nie;
-  document.getElementById('pdf-date').textContent=
-    new Date().toLocaleDateString('es-GT',{year:'numeric',month:'long',day:'numeric'});
+  const score = calculateScore();
+  document.getElementById('pdf-name').textContent = name;
+  document.getElementById('pdf-nie').textContent = nie;
+  document.getElementById('pdf-date').textContent = 
+    new Date().toLocaleDateString('es-GT', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  const grid=document.getElementById('pdf-scores');
-  grid.innerHTML='';
-  score.scores.forEach(s=>{
-    const pct=Math.round((s.got/s.max)*100);
-    const color=pct>=70?'#16A34A':pct>=50?'#D97706':'#DC2626';
-    const row=document.createElement('div');row.className='pdf-row';
-    row.innerHTML=`<span class="pdf-rn">${s.name}</span><span class="pdf-rv" style="color:${color}">${s.got}/${s.max}</span>`;
+  const grid = document.getElementById('pdf-scores');
+  grid.innerHTML = '';
+  score.scores.forEach(s => {
+    const pct = Math.round((s.got / s.max) * 100);
+    const color = pct >= 70 ? '#16A34A' : pct >= 50 ? '#D97706' : '#DC2626';
+    const row = document.createElement('div');
+    row.className = 'pdf-row';
+    row.innerHTML = `<span class="pdf-rn">${s.name}</span><span class="pdf-rv" style="color:${color}">${s.got}/${s.max}</span>`;
     grid.appendChild(row);
   });
 
-  document.getElementById('pdf-total-str').textContent=
-    `${score.total} / ${score.maxTotal} puntos`;
+  document.getElementById('pdf-total-str').textContent = `${score.total} / ${score.maxTotal} puntos`;
+  document.getElementById('pdf-grade-footer').innerHTML = `Nota final: <strong>${score.grade}/10</strong> &nbsp;·&nbsp; ${score.total}/${score.maxTotal} pts &nbsp;·&nbsp; ${name} &nbsp;·&nbsp; NIE: ${nie}`;
 
-  document.getElementById('pdf-grade-footer').innerHTML=
-    `Nota final: <strong>${score.grade}/10</strong> &nbsp;·&nbsp; ${score.total}/${score.maxTotal} pts &nbsp;·&nbsp; ${name} &nbsp;·&nbsp; NIE: ${nie}`;
+  document.getElementById('pdf-loading').style.display = 'flex';
+  document.getElementById('pdf-btn').disabled = true;
 
-  document.getElementById('pdf-loading').style.display='flex';
-  document.getElementById('pdf-btn').disabled=true;
+  const el = document.getElementById('pdf-wrap');
+  const outer = document.getElementById('pdf-outer');
+  
+  // Lo traemos a la esquina superior izquierda real de la pantalla
+  outer.style.left = '0';
+  outer.style.top = '0';
+  outer.style.zIndex = '9999';
 
-  const el=document.getElementById('pdf-wrap');
-  // Temporarily move into viewport so html2canvas can render it
-  const outer=document.getElementById('pdf-outer');
-  outer.style.left='0';
-  outer.style.zIndex='9999';
-
-  const opt={
-    margin:[10,10,10,10],
-    filename:`Examen_Numbers_${name.replace(/\s+/g,'_')}.pdf`,
-    image:{type:'jpeg',quality:0.97},
-    html2canvas:{
-      scale:2,
-      useCORS:true,
-      logging:false,
-      letterRendering:true,
-      windowWidth:820,
-      scrollY: 0 // <-- SOLUCIÓN 1: Fuerza la captura desde el top 0
+  const opt = {
+    margin: [10, 10, 10, 10],
+    filename: `Examen_Numbers_${name.replace(/\s+/g, '_')}.pdf`,
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      letterRendering: true,
+      windowWidth: 820,
+      width: 780,     // Forzamos el ancho exacto del contenedor
+      scrollX: 0,     // Previene recortes horizontales
+      scrollY: 0,     // Previene recortes verticales
+      x: 0,           // Fuerza el punto de inicio X al ras del elemento
+      y: 0            // Fuerza el punto de inicio Y al ras del elemento
     },
-    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   };
 
-  // <-- SOLUCIÓN 2: Damos 100ms al navegador para renderizar el elemento visualmente
+  // 150ms para asegurar que el DOM dibujó los datos antes de la foto
   setTimeout(() => {
-    html2pdf().set(opt).from(el).save().then(()=>{
-      outer.style.left='-9999px';
-      outer.style.zIndex='-1';
-      document.getElementById('pdf-loading').style.display='none';
-      document.getElementById('pdf-btn').disabled=false;
+    html2pdf().set(opt).from(el).save().then(() => {
+      outer.style.left = '-9999px';
+      outer.style.zIndex = '-1';
+      document.getElementById('pdf-loading').style.display = 'none';
+      document.getElementById('pdf-btn').disabled = false;
       showToast('✅ PDF descargado con éxito');
-    }).catch(err=>{
+    }).catch(err => {
       console.error(err);
-      outer.style.left='-9999px';
-      outer.style.zIndex='-1';
-      document.getElementById('pdf-loading').style.display='none';
-      document.getElementById('pdf-btn').disabled=false;
+      outer.style.left = '-9999px';
+      outer.style.zIndex = '-1';
+      document.getElementById('pdf-loading').style.display = 'none';
+      document.getElementById('pdf-btn').disabled = false;
       showToast('❌ Error al generar PDF. Intenta de nuevo.');
     });
-  }, 100);
+  }, 150);
 }
 
 /* ============================================================
